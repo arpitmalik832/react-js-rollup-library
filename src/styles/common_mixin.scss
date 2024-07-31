@@ -1,0 +1,89 @@
+// Note: Include only frequently utilized mixins within this file,
+// as all of its contents are being exported.
+
+// mixin to add ellipsis
+@mixin ellipsis($maxWidth: false) {
+  @if $maxWidth {
+    max-width: $maxWidth;
+  }
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// Mixin for multiline ellipsis support on web
+// this will provide support only for -webkit- browser for till date
+@mixin ellipsisMulti($maxLine, $maxHeight: false) {
+  @if $maxHeight {
+    max-height: $maxHeight;
+  }
+
+  overflow: hidden; // fallback for non supported browsers
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+
+  white-space: normal;
+
+  -webkit-line-clamp: $maxLine;
+}
+
+@mixin rowGap($gap) {
+  @if $gap {
+    & > * + * {
+      margin-left: $gap;
+    }
+  }
+}
+
+@mixin colGap($gap) {
+  @if $gap {
+    & > * + * {
+      margin-top: $gap;
+    }
+  }
+}
+
+@mixin respond($breakpoint) {
+  @if $breakpoint == phone {
+    @media only screen and (max-width: 600px) {
+      @content;
+    }
+  }
+  @if $breakpoint == tab-land {
+    @media only screen and (max-width: 750px) {
+      @content;
+    }
+  }
+  @if $breakpoint == tab {
+    @media only screen and (max-width: 1070px) {
+      @content;
+    }
+  }
+  @if $breakpoint == desktop {
+    @media only screen and (min-width: 961px) {
+      @content;
+    }
+  }
+}
+
+@mixin scrollable {
+  @include respond(phone);
+
+  scrollbar-width: none;
+
+  overflow: -moz-scrollbars-none;
+  overflow-x: scroll;
+
+  max-width: 95vw;
+
+  white-space: nowrap;
+
+  -ms-overflow-style: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+    width: 0 !important;
+    height: 0 !important;
+  }
+}

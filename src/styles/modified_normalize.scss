@@ -1,30 +1,10 @@
-/**
- * Do not edit directly, this file was auto-generated.
- */
-/**
- * Do not edit directly, this file was auto-generated.
- */
-:root {
-  --background-primary-50: #000;
-  --background-primary-100: #acacac;
-  --background-primary-900: #fff;
-  --typography-scale-h1-font-size: 32px;
-  --typography-scale-h1-line-height: 32px;
-  --typography-scale-h1-letter-spacing: 0;
-  --typography-weight-bold: 700;
-}
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background-primary-50: #fff;
-    --background-primary-100: #acacac;
-    --background-primary-900: #000;
-  }
-}
-
 html {
   scroll-behavior: smooth;
+
   overscroll-behavior: none;
+
   box-sizing: border-box;
+
   font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Helvetica Neue',
     'Segoe UI', sans-serif, 'Open Sans';
   font-size: 10px;
@@ -36,15 +16,24 @@ html {
 
 body {
   user-select: none;
+
   width: 100%;
   height: 100%;
   margin: 0 auto;
+
   font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Helvetica Neue',
     'Segoe UI', sans-serif, 'Open Sans';
+
+  // font-family:"Roboto" , "Lato", "Muli", "SFProText";
   font-weight: 400;
   line-height: 1.5;
+
+  // font-size: 14px;
+
   color: #101010;
+
   background: #fff !important;
+
   -webkit-overflow-scrolling: touch;
 }
 
@@ -84,16 +73,19 @@ p {
 /**
 * Hide the overflow in IE.
 */
+
 svg:not(:root) {
   overflow: hidden;
 }
 
 /* Forms
  ========================================================================== */
+
 /**
 * 1. Change font properties to `inherit` in all browsers (opinionated).
 * 2. Remove the margin in Firefox and Safari.
 */
+
 button,
 input,
 optgroup,
@@ -113,6 +105,7 @@ input {
 * Remove the inheritance of text transform in Edge, Firefox, and IE.
 * 1. Remove the inheritance of text transform in Firefox.
 */
+
 button,
 select {
   /* 1 */
@@ -124,8 +117,9 @@ select {
 *    controls in Android 4.
 * 2. Correct the inability to style clickable types in iOS and Safari.
 */
+
 button,
-html [type='button'],
+html [type='button'], /* 1 */
 [type='reset'],
 [type='submit'] {
   appearance: button; /* 2 */
@@ -134,6 +128,7 @@ html [type='button'],
 /**
 * Correct the cursor style of increment and decrement buttons in Chrome.
 */
+
 [type='number']::-webkit-inner-spin-button,
 [type='number']::-webkit-outer-spin-button {
   height: auto;
@@ -143,6 +138,7 @@ html [type='button'],
 * 1. Correct the odd appearance in Chrome and Safari.
 * 2. Correct the outline style in Safari.
 */
+
 [type='search'] {
   appearance: textfield; /* 1 */
   outline-offset: -2px; /* 2 */
@@ -151,6 +147,7 @@ html [type='button'],
 /**
 * Remove the inner padding and cancel buttons in Chrome and Safari on OS X.
 */
+
 [type='search']::-webkit-search-cancel-button,
 [type='search']::-webkit-search-decoration {
   appearance: none;
@@ -160,6 +157,7 @@ html [type='button'],
 * 1. Correct the inability to style clickable types in iOS and Safari.
 * 2. Change font properties to `inherit` in Safari.
 */
+
 ::-webkit-file-upload-button {
   font: inherit; /* 2 */
   appearance: button; /* 1 */
@@ -169,6 +167,7 @@ html [type='button'],
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+
   -webkit-tap-highlight-color: #000;
 }
 
@@ -180,11 +179,15 @@ html [type='button'],
 * 1. Remove the gray background on active links in IE 10.
 * 2. Remove gaps in links underline in iOS 8+ and Safari 8+.
 */
+
 a {
   cursor: pointer;
+
   color: #00b8f5;
   text-decoration: none;
+
   background-color: transparent; /* 1 */
+
   text-decoration-skip: objects; /* 2 */
 }
 
@@ -192,6 +195,7 @@ a {
 * Remove the outline on focused links when they are also active or hovered
 * in all browsers (opinionated).
 */
+
 a:active,
 a:hover {
   outline-width: 0;
@@ -215,6 +219,7 @@ h6 {
 }
 
 .close {
+  // position: absolute;
   width: 16px;
   height: 16px;
   opacity: 1;
@@ -222,10 +227,14 @@ h6 {
 
 .close::before,
 .close::after {
+  // left: 15px;
   content: ' ';
+
   position: absolute;
+
   width: 1.5px;
   height: 16px;
+
   background-color: #00b8f5;
 }
 
@@ -235,21 +244,4 @@ h6 {
 
 .close::after {
   transform: rotate(-45deg);
-}
-
-.zeroPadding {
-  padding: 0;
-}
-
-.zeroMargin {
-  margin: 0;
-}
-
-.zeroHorizontalMargin {
-  margin-right: 0;
-  margin-left: 0;
-}
-
-.fullWidth {
-  width: 100%;
 }

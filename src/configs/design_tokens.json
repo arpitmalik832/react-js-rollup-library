@@ -66,5 +66,25 @@
         }
       }
     }
+  },
+  "typography": {
+    "scale": {
+      "h1": {
+        "font-size": {
+          "value": "32px"
+        },
+        "line-height": {
+          "value": "32px"
+        },
+        "letter-spacing": {
+          "value": "0px"
+        }
+      }
+    },
+    "weight": {
+      "bold": {
+        "value": 700
+      }
+    }
   }
 }

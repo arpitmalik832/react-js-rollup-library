@@ -13,6 +13,14 @@ const config = {
           },
           filter: token => token.attributes.category === 'color-semantics',
         },
+        {
+          destination: 'typography.scss',
+          format: 'scss/map-deep',
+          options: {
+            mapName: 'typography',
+          },
+          filter: token => token.attributes.category === 'typography',
+        },
       ],
     },
     // "scss-export": {

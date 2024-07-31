@@ -1,9 +1,26 @@
 @import './style-dictionary/colors';
+@import './style-dictionary/typography';
 
 :root {
   @each $property, $value in $colors {
     @if str-index($property, 'color-semantics-light-') == 1 {
       --#{str-slice($property, 23)}: #{$value};
+    }
+  }
+
+  @each $category, $styles in $typography {
+    @each $style, $properties in $styles {
+      @if $style == 'weight' {
+        @each $property, $value in $properties {
+          --#{$category}-#{$style}-#{$property}: #{$value};
+        }
+      } @else {
+        @each $property, $values in $properties {
+          @each $item, $value in $values {
+            --#{$category}-#{$style}-#{$property}-#{$item}: #{$value};
+          }
+        }
+      }
     }
   }
 
