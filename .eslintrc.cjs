@@ -3,8 +3,21 @@
 
 module.exports = {
   parser: '@babel/eslint-parser',
-  extends: ['airbnb', 'plugin:css-modules/recommended', 'prettier'],
-  plugins: ['css-modules', 'import', 'prettier'],
+  extends: [
+    'airbnb',
+    'plugin:css-modules/recommended',
+    'plugin:jsx-a11y/recommended',
+    'prettier',
+    'react-app',
+  ],
+  plugins: [
+    'css-modules',
+    'import',
+    'jsx-a11y',
+    'prettier',
+    'react',
+    'react-hooks',
+  ],
   // globals: {
   //   __isRelease__: 'readonly',
   //   __isBeta__: 'readonly',
@@ -12,12 +25,12 @@ module.exports = {
   // },
   rules: {
     // rules regarding react plugin
-    // 'react/react-in-jsx-scope': 0,
-    // 'react/function-component-definition': 0,
-    // 'react/prop-types': 0,
-    // // rules regarding react-hooks plugin
-    // 'react-hooks/rules-of-hooks': 2,
-    // 'react-hooks/exhaustive-deps': 0,
+    'react/react-in-jsx-scope': 0,
+    'react/function-component-definition': 0,
+    'react/prop-types': 0,
+    // rules regarding react-hooks plugin
+    'react-hooks/rules-of-hooks': 2,
+    'react-hooks/exhaustive-deps': 0,
     // rules regarding css-modules plugin
     'css-modules/no-unused-class': [2, { camelCase: true }],
     'css-modules/no-undef-class': [2, { camelCase: true }],
