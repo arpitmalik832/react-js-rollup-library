@@ -1,9 +1,9 @@
 const config = {
-  source: ['./src/configs/**/*.json'],
+  source: ['./static/enums/**/*.json'],
   platforms: {
     scss: {
       transformGroup: 'scss',
-      buildPath: './src/styles/style-dictionary/',
+      buildPath: './static/styles/style-dictionary/',
       files: [
         {
           destination: 'colors.scss',

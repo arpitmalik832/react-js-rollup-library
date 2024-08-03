@@ -63,8 +63,9 @@ module.exports = {
   ignoreFiles: [
     '**/*.{js,jsx,ts}',
     'build/**/*.{css,scss}',
-    'src/styles/postcss-processed/**/*.{css,scss}',
-    'src/styles/sass-generated/**/*.{css,scss}',
+    'dist/**/*.{css,scss}',
+    'static/styles/postcss-processed/**/*.{css,scss}',
+    'static/styles/sass-generated/**/*.{css,scss}',
     'node_modules/**/*.{css,scss}',
     'coverage/**/*.{css,scss}',
   ],

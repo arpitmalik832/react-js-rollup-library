@@ -1,5 +1,5 @@
 // Do not edit directly.
-// Last generated on Wed Jul 31 2024 22:36:04 GMT+0530 (India Standard Time)
+// Last generated on Sat Aug 03 2024 16:46:26 GMT+0530 (India Standard Time)
 
 export default [
   'lg32\\standardAccount.svg',

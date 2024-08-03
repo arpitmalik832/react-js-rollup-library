@@ -1,4 +1,4 @@
-@import './style-dictionary/typography';
+@import '../../static/styles/style-dictionary/typography';
 
 @mixin typography($type, $color) {
   @if $type == 'h1' {

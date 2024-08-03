@@ -5,19 +5,19 @@
  * Do not edit directly, this file was auto-generated.
  */
 :root {
-  --background-primary-50: #000;
+  --background-primary-50: #000000;
   --background-primary-100: #acacac;
-  --background-primary-900: #fff;
+  --background-primary-900: #ffffff;
   --typography-scale-h1-font-size: 32px;
   --typography-scale-h1-line-height: 32px;
-  --typography-scale-h1-letter-spacing: 0;
+  --typography-scale-h1-letter-spacing: 0px;
   --typography-weight-bold: 700;
 }
 @media (prefers-color-scheme: dark) {
   :root {
-    --background-primary-50: #fff;
+    --background-primary-50: #ffffff;
     --background-primary-100: #acacac;
-    --background-primary-900: #000;
+    --background-primary-900: #000000;
   }
 }
 
@@ -25,52 +25,21 @@ html {
   scroll-behavior: smooth;
   overscroll-behavior: none;
   box-sizing: border-box;
-  font-family:
-    -apple-system,
-    system-ui,
-    -apple-system,
-    Segoe UI,
-    Roboto,
-    Ubuntu,
-    Cantarell,
-    Noto Sans,
-    sans-serif,
-    BlinkMacSystemFont,
-    'Helvetica Neue',
-    'Segoe UI',
-    sans-serif,
-    'Open Sans';
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Helvetica Neue',
+    'Segoe UI', sans-serif, 'Open Sans';
   font-size: 10px;
   -webkit-font-smoothing: antialiased;
   line-height: 1.5; /* 2 */
-  -webkit-text-size-adjust: 100%;
-  -moz-text-size-adjust: 100%;
   text-size-adjust: 100%; /* 3 */
   text-rendering: optimizelegibility;
 }
 
 body {
-  -webkit-user-select: none;
-  -moz-user-select: none;
   user-select: none;
   width: 100%;
   height: 100%;
-  margin: 0 auto;
-  font-family:
-    -apple-system,
-    system-ui,
-    -apple-system,
-    Segoe UI,
-    Roboto,
-    Ubuntu,
-    Cantarell,
-    Noto Sans,
-    sans-serif,
-    BlinkMacSystemFont,
-    'Helvetica Neue',
-    'Segoe UI',
-    sans-serif,
-    'Open Sans';
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Helvetica Neue',
+    'Segoe UI', sans-serif, 'Open Sans';
   font-weight: 400;
   line-height: 1.5;
   color: #101010;
@@ -106,11 +75,6 @@ svg {
   animation: fadeIn ease 500ms;
 }
 
-p {
-  margin: 0;
-  padding: 0;
-}
-
 /**
 * Hide the overflow in IE.
 */
@@ -129,7 +93,6 @@ input,
 optgroup,
 select,
 textarea {
-  margin: 0; /* 2 */
   font: inherit; /* 1 */
 }
 
@@ -158,8 +121,6 @@ button,
 html [type='button'],
 [type='reset'],
 [type='submit'] {
-  -webkit-appearance: button;
-  -moz-appearance: button;
   appearance: button; /* 2 */
 }
 
@@ -176,8 +137,6 @@ html [type='button'],
 * 2. Correct the outline style in Safari.
 */
 [type='search'] {
-  -webkit-appearance: textfield;
-  -moz-appearance: textfield;
   appearance: textfield; /* 1 */
   outline-offset: -2px; /* 2 */
 }
@@ -187,7 +146,6 @@ html [type='button'],
 */
 [type='search']::-webkit-search-cancel-button,
 [type='search']::-webkit-search-decoration {
-  -webkit-appearance: none;
   appearance: none;
 }
 
@@ -197,7 +155,6 @@ html [type='button'],
 */
 ::-webkit-file-upload-button {
   font: inherit; /* 2 */
-  -webkit-appearance: button;
   appearance: button; /* 1 */
 }
 
@@ -219,10 +176,8 @@ html [type='button'],
 a {
   cursor: pointer;
   color: #00b8f5;
-  -webkit-text-decoration: none;
   text-decoration: none;
   background-color: transparent; /* 1 */
-  -webkit-text-decoration-skip: objects;
   text-decoration-skip: objects; /* 2 */
 }
 
@@ -237,19 +192,7 @@ a:hover {
 
 ol,
 ul {
-  margin: 0;
-  padding: 0;
   list-style: none;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin: 0;
-  padding: 0;
 }
 
 .close {

@@ -29,12 +29,12 @@ async function processIcons(dir) {
 export default ${JSON.stringify(files, null, 2)}
 `;
   await writeFile(
-    join(dirName, '..', 'src', 'enums', 'icons-list.js'),
+    join(dirName, '..', 'static', 'enums', 'icons-list.js'),
     content,
   );
 }
 
-processIcons(join(dirName, '..', 'src', 'assets'))
+processIcons(join(dirName, '..', 'src', 'assets', 'icons'))
   .then(() => {
     console.log('\x1b[42m%s\x1b[0m', 'Successfully generated icons list');
   })

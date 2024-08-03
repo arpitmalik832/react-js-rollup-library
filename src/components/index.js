@@ -1,3 +1,1 @@
-import * as atoms from './atoms';
-
-export { atoms };
+export * from './atoms';

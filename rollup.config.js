@@ -1,34 +1,6 @@
-import resolve from '@rollup/plugin-node-resolve';
-import commonjs from '@rollup/plugin-commonjs';
-import babel from '@rollup/plugin-babel';
-import peerDepsExternal from 'rollup-plugin-peer-deps-external';
+import getEntries from './build_utils/rollup/entries.mjs';
+import svgrConfig from './build_utils/rollup/svgr.mjs';
 
-const config = [
-  {
-    input: 'src/components/index.js',
-    output: [
-      {
-        file: 'dist/bundle.js',
-        format: 'cjs',
-      },
-      {
-        file: 'dist/bundle.esm.js',
-        format: 'esm',
-      },
-    ],
-    plugins: [
-      peerDepsExternal(),
-      resolve({
-        extensions: ['.js', '.jsx'],
-      }),
-      commonjs(),
-      babel({
-        babelHelpers: 'runtime',
-        exclude: 'node_modules/**',
-        configFile: './.babelrc.cjs',
-      }),
-    ],
-  },
-];
+const config = [...getEntries(), svgrConfig];
 
 export default config;

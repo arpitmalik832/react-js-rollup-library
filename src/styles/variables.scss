@@ -1,5 +1,5 @@
-@import './style-dictionary/colors';
-@import './style-dictionary/typography';
+@import '../../static/styles/style-dictionary/colors';
+@import '../../static/styles/style-dictionary/typography';
 
 :root {
   @each $property, $value in $colors {
