@@ -69,6 +69,39 @@ printf "${Green}End - Knipping of the code.${NC}"
 
 printf "\n${Blue}=================================${NC}\n"
 
+# build code before commit 
+printf "\n${Blue}=================================${NC}\n"
+
+printf "${Green}Start - Check build (staging).${NC}"
+
+npm run build
+
+printf "${Green}End - Check build (staging).${NC}"
+
+printf "\n${Blue}=================================${NC}\n"
+
+# build-beta code before commit 
+# printf "\n${Blue}=================================${NC}\n"
+
+# printf "${Green}Start - Check build (beta).${NC}"
+
+# # npm run build:beta
+
+# printf "${Green}End - Check build (beta).${NC}"
+
+# printf "\n${Blue}=================================${NC}\n"
+
+# build-prod code before commit 
+# printf "\n${Blue}=================================${NC}\n"
+
+# printf "${Green}Start - Check build (production).${NC}"
+
+# npm run build:production
+
+# printf "${Green}End - Check build (production).${NC}"
+
+# printf "\n${Blue}=================================${NC}\n"
+
 # validate code before commit.
 printf "\n${Blue}=================================${NC}\n"
 
@@ -101,38 +134,5 @@ printf "\n${Blue}=================================${NC}\n"
 # npm run e2e-run:pre-commit
 
 # printf "${Green}End - E2E testing.${NC}"
-
-# printf "\n${Blue}=================================${NC}\n"
-
-# # build code before commit 
-printf "\n${Blue}=================================${NC}\n"
-
-printf "${Green}Start - Check build (staging).${NC}"
-
-npm run build
-
-printf "${Green}End - Check build (staging).${NC}"
-
-printf "\n${Blue}=================================${NC}\n"
-
-# build-beta code before commit 
-# printf "\n${Blue}=================================${NC}\n"
-
-# printf "${Green}Start - Check build (beta).${NC}"
-
-# # npm run build:beta
-
-# printf "${Green}End - Check build (beta).${NC}"
-
-# printf "\n${Blue}=================================${NC}\n"
-
-# build-prod code before commit 
-# printf "\n${Blue}=================================${NC}\n"
-
-# printf "${Green}Start - Check build (production).${NC}"
-
-# npm run build:production
-
-# printf "${Green}End - Check build (production).${NC}"
 
 # printf "\n${Blue}=================================${NC}\n"

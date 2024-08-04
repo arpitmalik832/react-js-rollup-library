@@ -10,7 +10,6 @@ const config = {
     preserveModules: true,
     preserveModulesRoot: 'src',
     sourcemap: true,
-    entryFileNames: chunkInfo => `${chunkInfo.name.replace('.svg', '')}.js`,
   },
   plugins: [svgr(svgrConfig)],
   external: ['react', 'react-dom'],

@@ -10,11 +10,11 @@ import postcss from 'rollup-plugin-postcss';
 import { ENTRIES } from '../config/entries.mjs';
 import svgrConfig from '../../svgr.config.mjs';
 
-const getEntryConfig = ({ inputFile, dirName }) => ({
+const getEntryConfig = ({ inputFile }) => ({
   input: inputFile,
   output: [
     {
-      dir: `dist/${dirName}`,
+      dir: 'dist',
       format: 'esm',
       sourcemap: true,
       preserveModules: true,

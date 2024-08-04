@@ -12,7 +12,7 @@
     "build-sass": "sass --no-source-map ./src/styles/index.scss ./static/styles/sass-generated/index.css && postcss ./static/styles/sass-generated/index.css -o ./static/styles/postcss-processed/index.css",
     "watch-sass": "sass --no-source-map --watch ./src/styles/index.scss ./static/styles/sass-generated/index.css && postcss ./static/styles/sass-generated/index.css -o ./static/styles/postcss-processed/index.css --watch",
     "generate-icons-list": "node scripts/generate_icons_list.js",
-    "build-w-rm": "npm run generate-styles && npm run generate-icons-list && npm run build-sass && rollup -c rollup.config.js && node scripts/post_build.js",
+    "build-w-rm": "npm run generate-styles && npm run generate-icons-list && npm run build-sass && rollup -c rollup.config.js",
     "build": "npm run rm-dist && npm run build-w-rm",
     "lint-js": "eslint \"**/*.{js,jsx}\" --quiet --ignore-path .eslintignore",
     "lint-css": "stylelint \"**/*.{css,scss}\"",
