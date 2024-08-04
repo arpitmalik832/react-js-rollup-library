@@ -1,6 +1,7 @@
 import svgr from '@svgr/rollup';
 
-import icons_list from '../../static/enums/icons-list.js';
+import icons_list from '../../static/enums/icons_list.mjs';
+import svgrConfig from '../../svgr.config.mjs';
 
 const config = {
   input: icons_list.map(i => `src/assets/icons/${i}`),
@@ -8,43 +9,10 @@ const config = {
     dir: 'dist',
     preserveModules: true,
     preserveModulesRoot: 'src',
+    sourcemap: true,
     entryFileNames: chunkInfo => `${chunkInfo.name.replace('.svg', '')}.js`,
   },
-  plugins: [
-    // multiInput({
-    //   transformOutputPath: output => output.replace('assets/', ''),
-    // }),
-    svgr(),
-    // copy({
-    //   hook: "buildStart",
-    //   targets: [
-    //     { src: "static/styles/*", dest: "dist/styles" },
-    //     {
-    //       src: "src/commonStyles/sass-generated/index.css",
-    //       dest: "dist/styles",
-    //       rename: "index-common.css",
-    //     },
-    //     {
-    //       src: "dist/commonComponents-esm/assets/components/molecules/*",
-    //       dest: "dist/styles",
-    //     },
-    //     {
-    //       src: "dist/commonComponents-esm/assets/components/atoms/*",
-    //       dest: "dist/styles",
-    //     },
-    //   ],
-    // }),
-    // del({
-    //   hook: "buildEnd",
-    //   targets: [
-    //     "dist/commonComponents/assets",
-    //     "dist/commonComponents-esm/assets/components/molecules",
-    //     "dist/commonComponents-esm/assets/components/atoms",
-    //     "dist/commonComponents-esm/assets/index.css",
-    //   ],
-    // }),
-    // importMixins(),
-  ],
+  plugins: [svgr(svgrConfig)],
   external: ['react', 'react-dom'],
 };
 

@@ -8,20 +8,17 @@ import image from '@rollup/plugin-image';
 import postcss from 'rollup-plugin-postcss';
 
 import { ENTRIES } from '../config/entries.mjs';
+import svgrConfig from '../../svgr.config.mjs';
 
 const getEntryConfig = ({ inputFile, dirName }) => ({
   input: inputFile,
   output: [
     {
       dir: `dist/${dirName}`,
-      format: 'cjs',
-    },
-    {
-      dir: `dist/${dirName}-esm`,
       format: 'esm',
+      sourcemap: true,
       preserveModules: true,
       preserveModulesRoot: 'src',
-      assetFileNames: 'assets/[name][extname]',
     },
   ],
   plugins: [
@@ -45,7 +42,7 @@ const getEntryConfig = ({ inputFile, dirName }) => ({
     }),
     image(),
     url(),
-    svgr({ icon: true }),
+    svgr(svgrConfig),
   ],
 });
 

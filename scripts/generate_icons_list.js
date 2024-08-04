@@ -1,12 +1,12 @@
 /* eslint-disable no-console */
 import { resolve, join, dirname, sep } from 'path';
-import fs from 'fs';
+import { readdir, writeFile } from 'fs/promises';
 import { fileURLToPath } from 'url';
+
+import commonPaths from '../build_utils/config/commonPaths.mjs';
 
 const filename = fileURLToPath(import.meta.url);
 const dirName = dirname(filename);
-
-const { readdir, writeFile } = fs.promises;
 
 async function getIcons(dir) {
   const dirents = await readdir(dir, { withFileTypes: true });
@@ -28,13 +28,10 @@ async function processIcons(dir) {
 
 export default ${JSON.stringify(files, null, 2)}
 `;
-  await writeFile(
-    join(dirName, '..', 'static', 'enums', 'icons-list.js'),
-    content,
-  );
+  await writeFile(join(dirName, '..', commonPaths.icons_list), content);
 }
 
-processIcons(join(dirName, '..', 'src', 'assets', 'icons'))
+processIcons(join(dirName, '..', commonPaths.icons))
   .then(() => {
     console.log('\x1b[42m%s\x1b[0m', 'Successfully generated icons list');
   })
