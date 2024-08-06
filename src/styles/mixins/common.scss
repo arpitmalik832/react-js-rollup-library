@@ -1,7 +1,7 @@
 // Note: Include only frequently utilized mixins within this file,
 // as all of its contents are being exported.
 
-// mixin to add ellipsis
+// Ellipsis for single line text overflow
 @mixin ellipsis($maxWidth: false) {
   @if $maxWidth {
     max-width: $maxWidth;
@@ -12,7 +12,7 @@
   white-space: nowrap;
 }
 
-// Mixin for multiline ellipsis support on web
+// Multiline ellipsis for webkit browsers
 // this will provide support only for -webkit- browser for till date
 @mixin ellipsisMulti($maxLine, $maxHeight: false) {
   @if $maxHeight {
@@ -28,6 +28,7 @@
   -webkit-line-clamp: $maxLine;
 }
 
+// Add horizontal gap between elements
 @mixin rowGap($gap) {
   @if $gap {
     & > * + * {
@@ -36,6 +37,7 @@
   }
 }
 
+// Add vertical gap between elements
 @mixin colGap($gap) {
   @if $gap {
     & > * + * {
@@ -44,6 +46,7 @@
   }
 }
 
+// Responsive breakpoints
 @mixin respond($breakpoint) {
   @if $breakpoint == phone {
     @media only screen and (max-width: 600px) {
@@ -67,6 +70,7 @@
   }
 }
 
+// Scrollable container with cross-browser support
 @mixin scrollable {
   @include respond(phone);
 
@@ -86,4 +90,30 @@
     width: 0 !important;
     height: 0 !important;
   }
+}
+
+// Flexbox layout
+@mixin flex($direction: row, $justify: flex-start, $align: stretch) {
+  display: flex;
+  flex-direction: $direction;
+  align-items: $align;
+  justify-content: $justify;
+}
+
+// Grid layout
+@mixin grid($columns: 1fr, $rows: auto, $gap: 0) {
+  display: grid;
+  grid-template-columns: $columns;
+  grid-template-rows: $rows;
+  gap: $gap;
+}
+
+// Transition
+@mixin transition($property: all, $duration: 0.3s, $timing: ease) {
+  transition: $property $duration $timing;
+}
+
+// Box shadow
+@mixin boxShadow($x: 0, $y: 2px, $blur: 4px, $color: #000) {
+  box-shadow: $x $y $blur $color;
 }

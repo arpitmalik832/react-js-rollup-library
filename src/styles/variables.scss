@@ -1,14 +1,14 @@
-@import '../../static/styles/style-dictionary/colors';
-@import '../../static/styles/style-dictionary/typography';
+@use '../../static/styles/style-dictionary/colors' as c;
+@use '../../static/styles/style-dictionary/typography' as t;
 
 :root {
-  @each $property, $value in $colors {
+  @each $property, $value in c.$colors {
     @if str-index($property, 'color-semantics-light-') == 1 {
       --#{str-slice($property, 23)}: #{$value};
     }
   }
 
-  @each $category, $styles in $typography {
+  @each $category, $styles in t.$typography {
     @each $style, $properties in $styles {
       @if $style == 'weight' {
         @each $property, $value in $properties {
@@ -25,7 +25,7 @@
   }
 
   @media (prefers-color-scheme: dark) {
-    @each $property, $value in $colors {
+    @each $property, $value in c.$colors {
       @if str-index($property, 'color-semantics-dark-') == 1 {
         --#{str-slice($property, 22)}: #{$value};
       }

@@ -1,6 +1,8 @@
-@import '../../../styles/typography_mixin';
-@import '../../../styles/common_mixin';
+@use '../../../styles/mixins/typography' as t;
+@use '../../../styles/mixins/common' as c;
 
 .button {
+  @include t.typography(h1, bold, #000);
+
   margin: 0;
 }
