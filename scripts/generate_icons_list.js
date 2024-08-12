@@ -26,7 +26,9 @@ async function processIcons(dir) {
   const content = `// Do not edit directly.
 // Last generated on ${new Date()}
 
-export default ${JSON.stringify(files, null, 2)}
+const list = ${JSON.stringify(files, null, 2)}
+
+export default list;
 `;
   await writeFile(join(dirName, '..', commonPaths.icons_list), content);
 }

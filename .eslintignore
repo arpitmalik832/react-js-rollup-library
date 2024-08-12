@@ -6,3 +6,5 @@ cypress/fixtures
 cypress/downloads
 cypress/videos
 cypress/screenshots
+.storybook
+storybook-static

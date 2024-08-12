@@ -2,7 +2,6 @@ const config = {
   prettier: true,
   svgo: true,
   exportType: 'named',
-  jsxRuntime: 'automatic',
   svgoConfig: {
     plugins: [
       {
@@ -14,7 +13,7 @@ const config = {
   titleProp: true,
   ref: true,
   outputDir: 'dist/assets',
-  icon: true,
+  icon: false,
 };
 
 export default config;

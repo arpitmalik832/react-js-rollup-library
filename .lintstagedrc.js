@@ -1,7 +1,7 @@
 const config = {
-  '**/*.{js,jsx}': [
+  '**/*.{mjs,cjs,js,jsx,mdx}': [
     'npm run lint-js:fix',
-    'npm run prettier:fix -- "**/*.{js,jsx}"',
+    'npm run prettier:fix -- "**/*.{mjs,cjs,js,jsx,mdx}"',
   ],
   '**/*.{css,scss}': [
     'npm run lint-css:fix',
