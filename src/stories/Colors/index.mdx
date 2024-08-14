@@ -1,0 +1,491 @@
+# Colors
+
+#### Figma: <a target="_blank" href="https://www.figma.com/file/AbqiH2M4TIrtrGCpjscVZ4/%F0%9F%93%A6-Design-Tokens?node-id=349%3A1189&mode=dev" rel="noreferrer">Click here</a>
+
+## How to use Colors ?
+
+There are multiples ways for you to use PODS colors
+
+### 1. CSS Variables (Recommended approach. Comes with auto-theming)
+
+Following color variables will be added to the `:root` of your document. These variables will automatically switch its value
+based on the current theme that you are using
+
+```css
+--background-primary-strong
+--background-primary-weak
+--background-negative-strong
+--background-negative-weak
+--background-notice-strong
+--background-notice-weak
+--background-positive-strong
+--background-positive-weak
+--background-offset-weak
+--background-offset-strong
+--background-neutral-strong
+--background-neutral-medium
+--background-neutral-weak
+--background-neutral-inverse
+--background-universal-strong
+--background-universal-inverse-strong
+--text-neutral-strong
+--text-neutral-medium
+--text-neutral-weak
+--text-neutral-inverse
+--text-primary-strong
+--text-positive-strong
+--text-negative-strong
+--text-notice-strong
+--text-neutral-variant
+--text-universal-strong
+--text-universal-inverse-strong
+--surface-level-1
+--surface-level-2
+--surface-level-3
+--icon-neutral-strong
+--icon-neutral-medium
+--icon-neutral-weak
+--icon-neutral-inverse
+--icon-neutral-variant
+--icon-primary-strong
+--icon-positive-strong
+--icon-notice-strong
+--icon-negative-strong
+--icon-universal-strong
+--icon-secondary-strong
+--icon-universal-inverse-strong
+--border-neutral-strong
+--border-neutral-medium
+--border-neutral-weak
+--border-neutral-inverse
+--border-primary-strong
+--border-positive-strong
+--border-notice-strong
+--border-negative-strong
+--overlay-strong
+--overlay-weak
+--brand-primary-strong
+--brand-secondary-strong
+--vivid-01-strong
+--vivid-01-weak
+--vivid-02-strong
+--vivid-02-weak
+--vivid-03-weak
+--vivid-03-strong
+--vivid-04-strong
+--vivid-05-strong
+--vivid-06-strong
+--vivid-06-weak
+--vivid-07-weak
+--vivid-07-strong
+```
+
+### 2. SCSS Variables
+
+You can use the exported `_colors.scss` file from `paytm_common_ui` with the below approach. Please note that these variables are just
+static values and you will need to manage theming support on your own if you use this.
+
+#### NPM
+
+You can import the `_colors.scss` file from `paytm_common_ui` to any of your `scss` file like below
+
+```css
+@import '~@paytm-h5-common/paytm_common_ui/styles/colors';
+```
+
+And then you can use all the variables defined in `_colors.scss` in your app
+
+#### MF
+
+`_colors.scss` will be hosted in the below path
+
+##### staging
+
+```js
+https://webappsstatic.paytmdgt.io/paytmcommonui/v1/static/styles/_colors.scss
+```
+
+##### production
+
+```js
+https://webappsstatic.paytm.com/paytmcommonui/v1/static/styles/_colors.scss
+```
+
+You can download it before your build phase and can import to your `scss` files. Below is a helper script
+for downloading the style files.
+
+```js
+const https = require('https');
+const fs = require('fs');
+const { join } = require('path');
+
+const files = ['_colors.scss', '_typography.scss'];
+const outputLocation = join(__dirname, '..', 'src', 'commonStyles'); // edit the output path as you wish
+const URL = `https://webappsstatic.paytmdgt.io/paytmcommonui/v1/static/styles/`; // modify this as per the domain you want
+
+const printError = (file, error) => {
+  console.error(
+    '\x1b[31m%s: %s\x1b[0m',
+    `Failed to download style file ${file}`,
+    error,
+  );
+};
+
+const downloadFile = file => {
+  const req = https.get(`${URL}/${file}`, function (response) {
+    if (response.statusCode !== 200) {
+      printError(file, response.statusMessage);
+      return;
+    }
+    const outputFile = fs.createWriteStream(`${outputLocation}/${file}`);
+    response.pipe(outputFile);
+    outputFile.on('finish', () => {
+      outputFile.close();
+      console.log('\x1b[32m%s\x1b[0m', `Downloaded ${file}`);
+    });
+    outputFile.on('error', error => {
+      console.error(
+        '\x1b[41m%s: %s\x1b[0m',
+        `Failed to download style file ${file}`,
+        error,
+      );
+    });
+  });
+  req.on('error', error => {
+    console.error(
+      '\x1b[41m%s: %s\x1b[0m',
+      `Failed to download style file ${file}`,
+      error,
+    );
+  });
+};
+
+const process = () => {
+  for (const file of files) {
+    downloadFile(file);
+  }
+};
+
+process();
+```
+
+### Variables defined in `_colors.scss`
+
+```css
+/**
+ * Do not edit directly
+ * Generated on Thu, 10 Aug 2023 07:54:52 GMT
+ */
+
+$color-semantics-light-background-primary-strong: #00b8f5ff !default;
+$color-semantics-light-background-primary-weak: #e0f5fdff !default;
+$color-semantics-light-background-negative-strong: #fd5154ff !default;
+$color-semantics-light-background-negative-weak: #ffebefff !default;
+$color-semantics-light-background-notice-strong: #ff9d00ff !default;
+$color-semantics-light-background-notice-weak: #fff8e1ff !default;
+$color-semantics-light-background-positive-strong: #21c179ff !default;
+$color-semantics-light-background-positive-weak: #e3f6ecff !default;
+$color-semantics-light-background-offset-weak: #f5f9feff !default;
+$color-semantics-light-background-offset-strong: #e7f1f8ff !default;
+$color-semantics-light-background-neutral-strong: #101010ff !default;
+$color-semantics-light-background-neutral-medium: #7e7e7eff !default;
+$color-semantics-light-background-neutral-weak: #e0e0e0ff !default;
+$color-semantics-light-background-neutral-inverse: #ffffffff !default;
+$color-semantics-light-background-universal-strong: #ffffffff !default;
+$color-semantics-light-background-universal-inverse-strong: #101010ff !default;
+$color-semantics-light-text-neutral-strong: #101010ff !default;
+$color-semantics-light-text-neutral-medium: #7e7e7eff !default;
+$color-semantics-light-text-neutral-weak: #cacacaff !default;
+$color-semantics-light-text-neutral-inverse: #ffffffff !default;
+$color-semantics-light-text-primary-strong: #00b8f5ff !default;
+$color-semantics-light-text-positive-strong: #21c179ff !default;
+$color-semantics-light-text-negative-strong: #fd5154ff !default;
+$color-semantics-light-text-notice-strong: #ff9d00ff !default;
+$color-semantics-light-text-neutral-variant: #101010ff !default;
+$color-semantics-light-text-universal-strong: #ffffffff !default;
+$color-semantics-light-text-universal-inverse-strong: #101010ff !default;
+$color-semantics-light-surface-level-1: #ffffffff !default;
+$color-semantics-light-surface-level-2: #ffffffff !default;
+$color-semantics-light-surface-level-3: #fafafaff !default;
+$color-semantics-light-icon-neutral-strong: #101010ff !default;
+$color-semantics-light-icon-neutral-medium: #7e7e7eff !default;
+$color-semantics-light-icon-neutral-weak: #cacacaff !default;
+$color-semantics-light-icon-neutral-inverse: #ffffffff !default;
+$color-semantics-light-icon-neutral-variant: #101010ff !default;
+$color-semantics-light-icon-primary-strong: #00b8f5ff !default;
+$color-semantics-light-icon-positive-strong: #21c179ff !default;
+$color-semantics-light-icon-notice-strong: #ff9d00ff !default;
+$color-semantics-light-icon-negative-strong: #fd5154ff !default;
+$color-semantics-light-icon-universal-strong: #ffffffff !default;
+$color-semantics-light-icon-secondary-strong: #012a72ff !default;
+$color-semantics-light-icon-universal-inverse-strong: #101010ff !default;
+$color-semantics-light-border-neutral-strong: #101010ff !default;
+$color-semantics-light-border-neutral-medium: #7e7e7eff !default;
+$color-semantics-light-border-neutral-weak: #e0e0e0ff !default;
+$color-semantics-light-border-neutral-inverse: #ffffffff !default;
+$color-semantics-light-border-primary-strong: #00b8f5ff !default;
+$color-semantics-light-border-positive-strong: #21c179ff !default;
+$color-semantics-light-border-notice-strong: #ff9d00ff !default;
+$color-semantics-light-border-negative-strong: #fd5154ff !default;
+$color-semantics-light-overlay-strong: #101010b3 !default;
+$color-semantics-light-overlay-weak: #10101021 !default;
+$color-semantics-light-brand-primary-strong: #00b8f5ff !default;
+$color-semantics-light-brand-secondary-strong: #012a72ff !default;
+$color-semantics-light-vivid-01-strong: #56ccdeff !default;
+$color-semantics-light-vivid-01-weak: #e0f6faff !default;
+$color-semantics-light-vivid-02-strong: #27ae5fff !default;
+$color-semantics-light-vivid-02-weak: #c2e6cdff !default;
+$color-semantics-light-vivid-03-weak: #f0deaeff !default;
+$color-semantics-light-vivid-03-strong: #e5c97cff !default;
+$color-semantics-light-vivid-04-strong: #fed533ff !default;
+$color-semantics-light-vivid-05-strong: #f495e3ff !default;
+$color-semantics-light-vivid-06-strong: #b3325dff !default;
+$color-semantics-light-vivid-06-weak: #eb5757ff !default;
+$color-semantics-light-vivid-07-weak: #2f81edff !default;
+$color-semantics-light-vivid-07-strong: #223368ff !default;
+$color-semantics-dark-background-primary-strong: #0079beff !default;
+$color-semantics-dark-background-primary-weak: #0f1d3dff !default;
+$color-semantics-dark-background-negative-strong: #ff3d38ff !default;
+$color-semantics-dark-background-negative-weak: #ffebefff !default;
+$color-semantics-dark-background-notice-strong: #ff8c01ff !default;
+$color-semantics-dark-background-notice-weak: #fff8e1ff !default;
+$color-semantics-dark-background-positive-strong: #00a657ff !default;
+$color-semantics-dark-background-positive-weak: #e3f6ecff !default;
+$color-semantics-dark-background-offset-weak: #1d2d52ff !default;
+$color-semantics-dark-background-offset-strong: #0f1d3dff !default;
+$color-semantics-dark-background-neutral-strong: #dfe0e2ff !default;
+$color-semantics-dark-background-neutral-medium: #9d9ea0ff !default;
+$color-semantics-dark-background-neutral-weak: #424e6dff !default;
+$color-semantics-dark-background-neutral-inverse: #1d2d52ff !default;
+$color-semantics-dark-background-universal-strong: #ffffffff !default;
+$color-semantics-dark-background-universal-inverse-strong: #101010ff !default;
+$color-semantics-dark-text-neutral-strong: #dfe0e2ff !default;
+$color-semantics-dark-text-neutral-medium: #9d9ea0ff !default;
+$color-semantics-dark-text-neutral-weak: #606163ff !default;
+$color-semantics-dark-text-neutral-inverse: #101010ff !default;
+$color-semantics-dark-text-primary-strong: #00abf4ff !default;
+$color-semantics-dark-text-positive-strong: #00a657ff !default;
+$color-semantics-dark-text-negative-strong: #ff3d38ff !default;
+$color-semantics-dark-text-notice-strong: #ff8c01ff !default;
+$color-semantics-dark-text-neutral-variant: #b5c9ffff !default;
+$color-semantics-dark-text-universal-strong: #ffffffff !default;
+$color-semantics-dark-text-universal-inverse-strong: #101010ff !default;
+$color-semantics-dark-surface-level-1: #070b27ff !default;
+$color-semantics-dark-surface-level-2: #152548ff !default;
+$color-semantics-dark-surface-level-3: #0f1d3dff !default;
+$color-semantics-dark-icon-neutral-strong: #dfe0e2ff !default;
+$color-semantics-dark-icon-neutral-medium: #9d9ea0ff !default;
+$color-semantics-dark-icon-neutral-weak: #606163ff !default;
+$color-semantics-dark-icon-neutral-inverse: #101010ff !default;
+$color-semantics-dark-icon-neutral-variant: #b5c9ffff !default;
+$color-semantics-dark-icon-primary-strong: #00abf4ff !default;
+$color-semantics-dark-icon-positive-strong: #00a657ff !default;
+$color-semantics-dark-icon-notice-strong: #ff8c01ff !default;
+$color-semantics-dark-icon-negative-strong: #ff3d38ff !default;
+$color-semantics-dark-icon-universal-strong: #ffffffff !default;
+$color-semantics-dark-icon-secondary-strong: #f4f5f7ff !default;
+$color-semantics-dark-icon-universal-inverse-strong: #101010ff !default;
+$color-semantics-dark-border-neutral-strong: #8b92a6ff !default;
+$color-semantics-dark-border-neutral-medium: #424e6dff !default;
+$color-semantics-dark-border-neutral-weak: #223259ff !default;
+$color-semantics-dark-border-neutral-inverse: #f4f5f7ff !default;
+$color-semantics-dark-border-primary-strong: #00abf4ff !default;
+$color-semantics-dark-border-positive-strong: #00a657ff !default;
+$color-semantics-dark-border-notice-strong: #ff8c01ff !default;
+$color-semantics-dark-border-negative-strong: #ff3d38ff !default;
+$color-semantics-dark-overlay-strong: #070b27d6 !default;
+$color-semantics-dark-overlay-weak: #070b2766 !default;
+$color-semantics-dark-brand-primary-strong: #0079beff !default;
+$color-semantics-dark-brand-secondary-strong: #012a72ff !default;
+$color-semantics-dark-vivid-01-strong: #1399adff !default;
+$color-semantics-dark-vivid-01-weak: #034e5cff !default;
+$color-semantics-dark-vivid-02-strong: #119e4dff !default;
+$color-semantics-dark-vivid-02-weak: #244f32ff !default;
+$color-semantics-dark-vivid-03-weak: #594e2fff !default;
+$color-semantics-dark-vivid-03-strong: #99781cff !default;
+$color-semantics-dark-vivid-04-strong: #856b05ff !default;
+$color-semantics-dark-vivid-05-strong: #b85ca7ff !default;
+$color-semantics-dark-vivid-06-strong: #db326bff !default;
+$color-semantics-dark-vivid-06-weak: #e34646ff !default;
+$color-semantics-dark-vivid-07-weak: #3281e8ff !default;
+$color-semantics-dark-vivid-07-strong: #4a75ffff !default;
+
+$colors: (
+  'color-semantics': (
+    'light': (
+      'background': (
+        'primary-strong': $color-semantics-light-background-primary-strong,
+        'primary-weak': $color-semantics-light-background-primary-weak,
+        'negative-strong': $color-semantics-light-background-negative-strong,
+        'negative-weak': $color-semantics-light-background-negative-weak,
+        'notice-strong': $color-semantics-light-background-notice-strong,
+        'notice-weak': $color-semantics-light-background-notice-weak,
+        'positive-strong': $color-semantics-light-background-positive-strong,
+        'positive-weak': $color-semantics-light-background-positive-weak,
+        'offset-weak': $color-semantics-light-background-offset-weak,
+        'offset-strong': $color-semantics-light-background-offset-strong,
+        'neutral-strong': $color-semantics-light-background-neutral-strong,
+        'neutral-medium': $color-semantics-light-background-neutral-medium,
+        'neutral-weak': $color-semantics-light-background-neutral-weak,
+        'neutral-inverse': $color-semantics-light-background-neutral-inverse,
+        'universal-strong': $color-semantics-light-background-universal-strong,
+        'universal-inverse-strong':
+          $color-semantics-light-background-universal-inverse-strong
+      ),
+      'text': (
+        'neutral-strong': $color-semantics-light-text-neutral-strong,
+        'neutral-medium': $color-semantics-light-text-neutral-medium,
+        'neutral-weak': $color-semantics-light-text-neutral-weak,
+        'neutral-inverse': $color-semantics-light-text-neutral-inverse,
+        'primary-strong': $color-semantics-light-text-primary-strong,
+        'positive-strong': $color-semantics-light-text-positive-strong,
+        'negative-strong': $color-semantics-light-text-negative-strong,
+        'notice-strong': $color-semantics-light-text-notice-strong,
+        'neutral-variant': $color-semantics-light-text-neutral-variant,
+        'universal-strong': $color-semantics-light-text-universal-strong,
+        'universal-inverse-strong':
+          $color-semantics-light-text-universal-inverse-strong
+      ),
+      'surface': (
+        'level-1': $color-semantics-light-surface-level-1,
+        'level-2': $color-semantics-light-surface-level-2,
+        'level-3': $color-semantics-light-surface-level-3
+      ),
+      'icon': (
+        'neutral-strong': $color-semantics-light-icon-neutral-strong,
+        'neutral-medium': $color-semantics-light-icon-neutral-medium,
+        'neutral-weak': $color-semantics-light-icon-neutral-weak,
+        'neutral-inverse': $color-semantics-light-icon-neutral-inverse,
+        'neutral-variant': $color-semantics-light-icon-neutral-variant,
+        'primary-strong': $color-semantics-light-icon-primary-strong,
+        'positive-strong': $color-semantics-light-icon-positive-strong,
+        'notice-strong': $color-semantics-light-icon-notice-strong,
+        'negative-strong': $color-semantics-light-icon-negative-strong,
+        'universal-strong': $color-semantics-light-icon-universal-strong,
+        'secondary-strong': $color-semantics-light-icon-secondary-strong,
+        'universal-inverse-strong':
+          $color-semantics-light-icon-universal-inverse-strong
+      ),
+      'border': (
+        'neutral-strong': $color-semantics-light-border-neutral-strong,
+        'neutral-medium': $color-semantics-light-border-neutral-medium,
+        'neutral-weak': $color-semantics-light-border-neutral-weak,
+        'neutral-inverse': $color-semantics-light-border-neutral-inverse,
+        'primary-strong': $color-semantics-light-border-primary-strong,
+        'positive-strong': $color-semantics-light-border-positive-strong,
+        'notice-strong': $color-semantics-light-border-notice-strong,
+        'negative-strong': $color-semantics-light-border-negative-strong
+      ),
+      'overlay': (
+        'strong': $color-semantics-light-overlay-strong,
+        'weak': $color-semantics-light-overlay-weak
+      ),
+      'brand': (
+        'primary-strong': $color-semantics-light-brand-primary-strong,
+        'secondary-strong': $color-semantics-light-brand-secondary-strong
+      ),
+      'vivid': (
+        '01-strong': $color-semantics-light-vivid-01-strong,
+        '01-weak': $color-semantics-light-vivid-01-weak,
+        '02-strong': $color-semantics-light-vivid-02-strong,
+        '02-weak': $color-semantics-light-vivid-02-weak,
+        '03-weak': $color-semantics-light-vivid-03-weak,
+        '03-strong': $color-semantics-light-vivid-03-strong,
+        '04-strong': $color-semantics-light-vivid-04-strong,
+        '05-strong': $color-semantics-light-vivid-05-strong,
+        '06-strong': $color-semantics-light-vivid-06-strong,
+        '06-weak': $color-semantics-light-vivid-06-weak,
+        '07-weak': $color-semantics-light-vivid-07-weak,
+        '07-strong': $color-semantics-light-vivid-07-strong
+      )
+    ),
+    'dark': (
+      'background': (
+        'primary-strong': $color-semantics-dark-background-primary-strong,
+        'primary-weak': $color-semantics-dark-background-primary-weak,
+        'negative-strong': $color-semantics-dark-background-negative-strong,
+        'negative-weak': $color-semantics-dark-background-negative-weak,
+        'notice-strong': $color-semantics-dark-background-notice-strong,
+        'notice-weak': $color-semantics-dark-background-notice-weak,
+        'positive-strong': $color-semantics-dark-background-positive-strong,
+        'positive-weak': $color-semantics-dark-background-positive-weak,
+        'offset-weak': $color-semantics-dark-background-offset-weak,
+        'offset-strong': $color-semantics-dark-background-offset-strong,
+        'neutral-strong': $color-semantics-dark-background-neutral-strong,
+        'neutral-medium': $color-semantics-dark-background-neutral-medium,
+        'neutral-weak': $color-semantics-dark-background-neutral-weak,
+        'neutral-inverse': $color-semantics-dark-background-neutral-inverse,
+        'universal-strong': $color-semantics-dark-background-universal-strong,
+        'universal-inverse-strong':
+          $color-semantics-dark-background-universal-inverse-strong
+      ),
+      'text': (
+        'neutral-strong': $color-semantics-dark-text-neutral-strong,
+        'neutral-medium': $color-semantics-dark-text-neutral-medium,
+        'neutral-weak': $color-semantics-dark-text-neutral-weak,
+        'neutral-inverse': $color-semantics-dark-text-neutral-inverse,
+        'primary-strong': $color-semantics-dark-text-primary-strong,
+        'positive-strong': $color-semantics-dark-text-positive-strong,
+        'negative-strong': $color-semantics-dark-text-negative-strong,
+        'notice-strong': $color-semantics-dark-text-notice-strong,
+        'neutral-variant': $color-semantics-dark-text-neutral-variant,
+        'universal-strong': $color-semantics-dark-text-universal-strong,
+        'universal-inverse-strong':
+          $color-semantics-dark-text-universal-inverse-strong
+      ),
+      'surface': (
+        'level-1': $color-semantics-dark-surface-level-1,
+        'level-2': $color-semantics-dark-surface-level-2,
+        'level-3': $color-semantics-dark-surface-level-3
+      ),
+      'icon': (
+        'neutral-strong': $color-semantics-dark-icon-neutral-strong,
+        'neutral-medium': $color-semantics-dark-icon-neutral-medium,
+        'neutral-weak': $color-semantics-dark-icon-neutral-weak,
+        'neutral-inverse': $color-semantics-dark-icon-neutral-inverse,
+        'neutral-variant': $color-semantics-dark-icon-neutral-variant,
+        'primary-strong': $color-semantics-dark-icon-primary-strong,
+        'positive-strong': $color-semantics-dark-icon-positive-strong,
+        'notice-strong': $color-semantics-dark-icon-notice-strong,
+        'negative-strong': $color-semantics-dark-icon-negative-strong,
+        'universal-strong': $color-semantics-dark-icon-universal-strong,
+        'secondary-strong': $color-semantics-dark-icon-secondary-strong,
+        'universal-inverse-strong':
+          $color-semantics-dark-icon-universal-inverse-strong
+      ),
+      'border': (
+        'neutral-strong': $color-semantics-dark-border-neutral-strong,
+        'neutral-medium': $color-semantics-dark-border-neutral-medium,
+        'neutral-weak': $color-semantics-dark-border-neutral-weak,
+        'neutral-inverse': $color-semantics-dark-border-neutral-inverse,
+        'primary-strong': $color-semantics-dark-border-primary-strong,
+        'positive-strong': $color-semantics-dark-border-positive-strong,
+        'notice-strong': $color-semantics-dark-border-notice-strong,
+        'negative-strong': $color-semantics-dark-border-negative-strong
+      ),
+      'overlay': (
+        'strong': $color-semantics-dark-overlay-strong,
+        'weak': $color-semantics-dark-overlay-weak
+      ),
+      'brand': (
+        'primary-strong': $color-semantics-dark-brand-primary-strong,
+        'secondary-strong': $color-semantics-dark-brand-secondary-strong
+      ),
+      'vivid': (
+        '01-strong': $color-semantics-dark-vivid-01-strong,
+        '01-weak': $color-semantics-dark-vivid-01-weak,
+        '02-strong': $color-semantics-dark-vivid-02-strong,
+        '02-weak': $color-semantics-dark-vivid-02-weak,
+        '03-weak': $color-semantics-dark-vivid-03-weak,
+        '03-strong': $color-semantics-dark-vivid-03-strong,
+        '04-strong': $color-semantics-dark-vivid-04-strong,
+        '05-strong': $color-semantics-dark-vivid-05-strong,
+        '06-strong': $color-semantics-dark-vivid-06-strong,
+        '06-weak': $color-semantics-dark-vivid-06-weak,
+        '07-weak': $color-semantics-dark-vivid-07-weak,
+        '07-strong': $color-semantics-dark-vivid-07-strong
+      )
+    )
+  )
+);
+```
