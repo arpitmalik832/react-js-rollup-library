@@ -1,5 +1,3 @@
-const deduplicate = arr => [
-  ...new Map(arr.map(item => [item.id, item])).values(),
-];
+const deduplicate = array => [...new Set(array)];
 
 export { deduplicate };
