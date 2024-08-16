@@ -4,5 +4,8 @@
 .button {
   @include t.typography(h1, bold, #000);
 
-  margin: 0;
+  /* stylelint-disable-next-line no-duplicate-selectors */
+  & {
+    margin: 0;
+  }
 }

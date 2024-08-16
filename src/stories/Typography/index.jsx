@@ -33,7 +33,7 @@ const Typography = () => {
           </thead>
           <tbody>
             {Object.entries(tokens?.typography?.scale).map(([name, meta]) => (
-              <tr>
+              <tr key={name}>
                 <td
                   style={{
                     ...getStyleObject(meta),
@@ -57,12 +57,13 @@ const Typography = () => {
         <div className={s.sectionHeading}>Type Weight</div>
         <div className={s.sectionBody}>
           {Object.entries(tokens?.typography?.weight).map(([weight, meta]) => (
-            <div className={s.weightContainer}>
+            <div key={weight} className={s.weightContainer}>
               <div className={s.weightName}>{capitalizeFirstChar(weight)}</div>
               <div className={s.weightDemoContainer}>
                 {Object.entries(tokens?.typography?.scale).map(
                   ([name, scalesMeta]) => (
                     <div
+                      key={name}
                       style={{
                         ...getStyleObject(scalesMeta),
                         fontWeight: meta.value,

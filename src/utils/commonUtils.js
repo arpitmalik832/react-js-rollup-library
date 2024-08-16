@@ -1,3 +1,5 @@
+import { errorLog } from './logsUtils';
+
 const isNonInteger = val => val === '.' || !/^[0-9,]*$/.test(val);
 
 const triggerCallback = (callback, ...args) => {
@@ -47,6 +49,14 @@ const scrollToTop = () => {
   window.scrollTo(0, 0);
 };
 
+const copyToClipboard = async text => {
+  try {
+    await navigator?.clipboard?.writeText(text);
+  } catch (e) {
+    errorLog('Failed to copy: ', e);
+  }
+};
+
 export {
   isNonInteger,
   triggerCallback,
@@ -56,4 +66,5 @@ export {
   downloadFileFromData,
   getEncodedURI,
   scrollToTop,
+  copyToClipboard,
 };

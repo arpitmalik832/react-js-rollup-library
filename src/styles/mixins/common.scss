@@ -7,9 +7,11 @@
     max-width: $maxWidth;
   }
 
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  & {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
 }
 
 // Multiline ellipsis for webkit browsers
@@ -116,4 +118,38 @@
 // Box shadow
 @mixin boxShadow($x: 0, $y: 2px, $blur: 4px, $color: #000) {
   box-shadow: $x $y $blur $color;
+}
+
+// for position property
+@mixin position(
+  $position,
+  $top: false,
+  $right: false,
+  $bottom: false,
+  $left: false,
+  $zIndex: false
+) {
+  & {
+    @if $top {
+      top: $top;
+    }
+
+    @if $right {
+      right: $right;
+    }
+
+    @if $bottom {
+      bottom: $bottom;
+    }
+
+    @if $left {
+      left: $left;
+    }
+
+    @if $zIndex {
+      z-index: $zIndex;
+    }
+
+    position: $position;
+  }
 }

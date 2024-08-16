@@ -21,7 +21,7 @@ const Colors = () => {
         style={{
           background: colorValue,
         }}
-        className={classnames(s.colorCard, {})}
+        className={s.colorCard}
       >
         <div
           className={classnames(s.colorName, {

@@ -5,7 +5,10 @@
   @include flex(column, center, stretch);
   @include colGap(24px);
 
-  padding: 0 16px 16px;
+  /* stylelint-disable-next-line no-duplicate-selectors */
+  & {
+    padding: 0 16px 16px;
+  }
 
   .section {
     @include flex(column, center, stretch);
@@ -29,8 +32,11 @@
         thead {
           @include typography(h1, bold, var(--background-primary-900));
 
-          text-align: left;
-          vertical-align: text-top;
+          /* stylelint-disable-next-line no-duplicate-selectors */
+          & {
+            text-align: left;
+            vertical-align: text-top;
+          }
         }
 
         tbody {
@@ -58,10 +64,13 @@
             @include flex(column, center, flex-start);
             @include colGap(4px);
 
-            width: 100%;
-            padding: 4px 8px;
-            color: var(--background-primary-900);
-            border: 1px solid var(--background-primary-900);
+            /* stylelint-disable-next-line no-duplicate-selectors */
+            & {
+              width: 100%;
+              padding: 4px 8px;
+              color: var(--background-primary-900);
+              border: 1px solid var(--background-primary-900);
+            }
           }
         }
       }
