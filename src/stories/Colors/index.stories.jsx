@@ -1,7 +1,7 @@
 import Colors from './index';
 
 export default {
-  title: 'Colors/Colors',
+  title: 'Design System/Colors',
   component: Colors,
 };
 

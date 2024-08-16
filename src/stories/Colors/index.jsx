@@ -1,5 +1,3 @@
-import React from 'react';
-
 import tokens from '../../../static/enums/design_tokens.json';
 import { capitalizeFirstChar } from '../../utils/stringUtils';
 import classnames from '../../utils/classNames';

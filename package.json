@@ -14,6 +14,7 @@
     "generate-icons-list": "node scripts/generate_icons_list.js",
     "colors-css-to-mdx": "node scripts/colors_css_to_mdx.js",
     "colors-scss-to-mdx": "node scripts/colors_scss_to_mdx.js",
+    "typography-scss-to-mdx": "node scripts/typography_scss_to_mdx.js",
     "build-w-rm": "npm run generate-styles && npm run generate-icons-list && npm run build-sass && rollup -c rollup.config.js && node build_utils/scripts/updateImportForMixins.js",
     "build": "npm run rm-dist && npm run build-w-rm",
     "lint-js": "eslint \"**/*.{mjs,cjs,js,jsx,mdx}\" --ignore-path .eslintignore",

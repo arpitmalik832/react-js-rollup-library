@@ -18,7 +18,7 @@ module.exports = {
     'declaration-property-unit-allowed-list': {
       '/^border|^padding|^gap/': ['px'],
     },
-    'unit-allowed-list': ['%', 'px', 'ms', 'deg', 'vw', 'vh'],
+    'unit-allowed-list': ['%', 'px', 'ms', 'deg', 'vw', 'vh', 'fr'],
     'color-named': 'never',
     'function-disallowed-list': ['rgb', 'hwb', 'lch', 'hsl'],
     'custom-property-pattern': [
