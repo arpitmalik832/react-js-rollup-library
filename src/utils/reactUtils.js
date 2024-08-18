@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-function useThrottle(func, limit) {
+function useThrottle(func, limit = 200) {
   const [inThrottle, setInThrottle] = useState(false);
 
   return (...args) => {

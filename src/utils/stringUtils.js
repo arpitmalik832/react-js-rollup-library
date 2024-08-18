@@ -19,7 +19,7 @@ const maskCharsExceptLastN = (val, n = 4) => {
 };
 
 const renderInitials = displayName => {
-  const [firstName = '', lastName = ''] = displayName.split(' ');
+  const [firstName, lastName = ''] = displayName.split(' ');
 
   return displayName
     ? `${firstName.slice(0, 1).toUpperCase()}${lastName

@@ -29,14 +29,14 @@ const getMaskedValue = str => `${str}`.replace(/.(?=.{4})/g, '*');
 
 const downloadFileFromData = (
   fileData,
-  fileName = 'download',
-  fileType = 'pdf',
+  fileName = 'file.pdf',
+  contentType = 'application/pdf',
 ) => {
-  const file = new Blob([fileData], { type: 'application/pdf' });
+  const file = new Blob([fileData], { type: contentType });
   const url = window.URL.createObjectURL(file);
   const link = document.createElement('a');
   link.href = url;
-  link.setAttribute('download', `${fileName}.${fileType}`);
+  link.download = fileName;
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
@@ -57,6 +57,17 @@ const copyToClipboard = async text => {
   }
 };
 
+const isLocalhost = () =>
+  Boolean(
+    window.location.hostname === 'localhost' ||
+      // [::1] is the IPv6 localhost address.
+      window.location.hostname === '[::1]' ||
+      // 127.0.0.0/8 are considered localhost for IPv4.
+      window.location.hostname.match(
+        /^127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/,
+      ),
+  );
+
 export {
   isNonInteger,
   triggerCallback,
@@ -67,4 +78,5 @@ export {
   getEncodedURI,
   scrollToTop,
   copyToClipboard,
+  isLocalhost,
 };

@@ -12,14 +12,11 @@ const isMobile = {
   },
 };
 
-const mobileBrowser = () => {
-  if (!isBrowser()) return false;
-  return isMobile.any();
-};
+const isMobileBrowser = () => (isBrowser() ? isMobile.any() : false);
 
 const isDesktop = () =>
   !/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
     navigator.userAgent,
   );
 
-export { isBrowser, isDesktop, isMobile, mobileBrowser };
+export { isBrowser, isDesktop, isMobile, isMobileBrowser };

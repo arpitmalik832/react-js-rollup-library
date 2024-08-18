@@ -37,7 +37,7 @@ while ((match = colorRegex.exec(cssContent)) !== null) {
 }
 
 // Create a markdown code block with the SCSS content
-const scssCodeBlock = `\`\`\`scss\n${res.map((i, ind) => `${ind !== 0 ? '\n' : ''}${i}`)}\n\`\`\``;
+const scssCodeBlock = `\`\`\`scss\n${res.map((i, ind) => `${ind !== 0 ? '\n' : ''}${i}`).join('')}\n\`\`\``;
 
 // Read the existing MDX file
 let mdxContent = fs.readFileSync(mdxFilePath, 'utf8');

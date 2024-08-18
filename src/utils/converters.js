@@ -1,12 +1,19 @@
 import { log } from './logsUtils';
 
-const rgbToHex = rgb =>
-  `#${rgb
+const rgbToHex = (rgbString = '') => {
+  const rgbArray = rgbString
+    .replace('rgb(', '')
+    .replace(')', '')
+    .split(',')
+    .map(n => parseInt(n, 10));
+
+  return `#${rgbArray
     .map(x => {
       const hex = x.toString(16).toUpperCase();
       return hex.length === 1 ? `0${hex}` : hex;
     })
     .join('')}`;
+};
 
 const rgbaToHex = (rgbaString = '') => {
   const rgbaArray = rgbaString
@@ -14,9 +21,7 @@ const rgbaToHex = (rgbaString = '') => {
     .replace(')', '')
     .split(',')
     .map((n, i) => (i !== 3 ? parseInt(n, 10) : parseFloat(n)));
-  return `${rgbToHex(rgbaArray.slice(0, 3))} . ${(rgbaArray[3] * 100).toFixed(
-    0,
-  )}%`;
+  return `${rgbToHex(`rgb(${rgbaArray.slice(0, 3).join(',')})`)}  ${(rgbaArray[3] * 100).toFixed(2)}`;
 };
 
 const formatSecToYodaTime = (seconds = 1) => {
