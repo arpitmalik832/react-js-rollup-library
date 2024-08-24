@@ -11,7 +11,10 @@ const config = {
           options: {
             mapName: 'colors',
           },
-          filter: token => token.attributes.category === 'color-semantics',
+          filter: token =>
+            ['color-primitives', 'color-semantics'].includes(
+              token.attributes.category,
+            ),
         },
         {
           destination: 'typography.scss',

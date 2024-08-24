@@ -5,7 +5,7 @@ import s from './index.module.scss';
 
 const Button = () => (
   <div data-testId="button" className={s.button}>
-    <StandardAccount />
+    <StandardAccount className={s.icon} />
     <img src={forwardGrey} alt="" />
     Button
   </div>

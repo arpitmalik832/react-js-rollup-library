@@ -3,6 +3,12 @@
 
 :root {
   @each $property, $value in c.$colors {
+    @if str-index($property, 'color-primitives-') == 1 {
+      --#{str-slice($property, 18)}: #{$value};
+    }
+  }
+
+  @each $property, $value in c.$colors {
     @if str-index($property, 'color-semantics-light-') == 1 {
       --#{str-slice($property, 23)}: #{$value};
     }
