@@ -1,9 +1,13 @@
+/**
+ * Style Dictionary configuration file.
+ * @file The file is saved as `style-dictionary.config.js`.
+ */
 const config = {
-  source: ['./src/configs/**/*.json'],
+  source: ['./static/enums/**/*.json'],
   platforms: {
     scss: {
       transformGroup: 'scss',
-      buildPath: './src/styles/style-dictionary/',
+      buildPath: './static/styles/style-dictionary/',
       files: [
         {
           destination: 'colors.scss',
@@ -12,6 +16,14 @@ const config = {
             mapName: 'colors',
           },
           filter: token => token.attributes.category === 'color-semantics',
+        },
+        {
+          destination: 'typography.scss',
+          format: 'scss/map-deep',
+          options: {
+            mapName: 'typography',
+          },
+          filter: token => token.attributes.category === 'typography',
         },
       ],
     },
