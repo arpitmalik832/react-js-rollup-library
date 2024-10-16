@@ -1,4 +1,8 @@
 /* eslint-disable no-console */
+/**
+ * This script serves the storybook.
+ * @file This script is saved as `serve_storybook.js`.
+ */
 import express from 'express';
 import path from 'path';
 import chalk from 'chalk';

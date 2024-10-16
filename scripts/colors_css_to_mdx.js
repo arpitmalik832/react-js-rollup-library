@@ -1,5 +1,9 @@
 /* eslint-disable import/extensions */
 /* eslint-disable no-console */
+/**
+ * This script extracts color variables from a CSS file and saves them to an MDX file.
+ * @file This script is saved as `colors_css_to_mdx.js`.
+ */
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';

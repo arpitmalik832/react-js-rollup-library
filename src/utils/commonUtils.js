@@ -1,20 +1,55 @@
+/**
+ * Contains common utility functions.
+ * @file This file is saved as `commonUtils.js`.
+ */
 import { errorLog } from './logsUtils';
 
-const isNonInteger = val => val === '.' || !/^[0-9,]*$/.test(val);
+/**
+ * Checks if the provided value is a non-integer.
+ * @param {string} val - The value to check.
+ * @returns {boolean} True if the value is non-integer, otherwise false.
+ * @example
+ * isNonInteger('3.14'); // returns true
+ */
+function isNonInteger(val) {
+  return val === '.' || !/^[0-9,]*$/.test(val);
+}
 
-const triggerCallback = (callback, ...args) => {
+/**
+ * Triggers a callback function with the provided arguments.
+ * @param {Function} callback - The callback function to be executed.
+ * @param {...any} args - The arguments to pass to the callback function.
+ * @example
+ * triggerCallback(() => console.log('Called!'), arg1, arg2);
+ */
+function triggerCallback(callback, ...args) {
   if (callback && typeof callback === 'function') {
     callback(...args);
   }
-};
+}
 
-const generateUniqSerial = base =>
-  'xxxx-xxxx-xxx-xxxx'.replace(/[x]/g, () => {
+/**
+ * Generates a unique serial string based on the specified base.
+ * @param {number} base - The base to use for generating the serial.
+ * @returns {string} The generated unique serial string.
+ * @example
+ * const serial = generateUniqSerial(16); // returns a unique serial in base 16
+ */
+function generateUniqSerial(base) {
+  return 'xxxx-xxxx-xxx-xxxx'.replace(/[x]/g, () => {
     const r = Math.floor(Math.random() * 16);
     return r.toString(base);
   });
+}
 
-const generateRandomString = len => {
+/**
+ * Generates a random string of specified length.
+ * @param {number} len - The length of the random string to generate.
+ * @returns {string} The generated random string.
+ * @example
+ * const randomString = generateRandomString(10);
+ */
+function generateRandomString(len) {
   let result = '';
   const characters =
     'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -23,15 +58,32 @@ const generateRandomString = len => {
     result += characters.charAt(Math.floor(Math.random() * charactersLength));
   }
   return result;
-};
+}
 
-const getMaskedValue = str => `${str}`.replace(/.(?=.{4})/g, '*');
+/**
+ * Masks all but the last four characters of a string.
+ * @param {string} str - The string to mask.
+ * @returns {string} The masked string.
+ * @example
+ * const masked = getMaskedValue('12345678'); // returns '****5678'
+ */
+function getMaskedValue(str) {
+  return `${str}`.replace(/.(?=.{4})/g, '*');
+}
 
-const downloadFileFromData = (
+/**
+ * Downloads a file from the provided data.
+ * @param {Blob} fileData - The data to be downloaded as a file.
+ * @param {string} fileName - The name of the file to be downloaded.
+ * @param {string} contentType - The MIME type of the file.
+ * @example
+ * downloadFileFromData(fileData, 'myFile.pdf', 'application/pdf');
+ */
+function downloadFileFromData(
   fileData,
   fileName = 'file.pdf',
   contentType = 'application/pdf',
-) => {
+) {
   const file = new Blob([fileData], { type: contentType });
   const url = window.URL.createObjectURL(file);
   const link = document.createElement('a');
@@ -40,25 +92,51 @@ const downloadFileFromData = (
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
-};
+}
 
-const getEncodedURI = (url, pathname) =>
-  `redirect=${encodeURIComponent(url)}&pathname=${pathname.slice(1)}`;
+/**
+ * Encodes a URL and pathname for redirection.
+ * @param {string} url - The URL to encode.
+ * @param {string} pathname - The pathname to encode.
+ * @returns {string} The encoded URI string.
+ * @example
+ * const encoded = getEncodedURI('http://example.com', '/path'); // returns 'redirect=http%3A%2F%2Fexample.com&pathname=path'
+ */
+function getEncodedURI(url, pathname) {
+  return `redirect=${encodeURIComponent(url)}&pathname=${pathname.slice(1)}`;
+}
 
-const scrollToTop = () => {
+/**
+ * Scrolls the window to the top of the page.
+ * @example
+ * scrollToTop(); // Scrolls to the top of the page
+ */
+function scrollToTop() {
   window.scrollTo(0, 0);
-};
+}
 
-const copyToClipboard = async text => {
+/**
+ * Copies the provided text to the clipboard.
+ * @param {string} text - The text to copy to the clipboard.
+ * @example
+ * copyToClipboard('Hello, World!');
+ */
+async function copyToClipboard(text) {
   try {
     await navigator?.clipboard?.writeText(text);
   } catch (e) {
     errorLog('Failed to copy: ', e);
   }
-};
+}
 
-const isLocalhost = () =>
-  Boolean(
+/**
+ * Checks if the current environment is localhost.
+ * @returns {boolean} True if the hostname is localhost, otherwise false.
+ * @example
+ * const isLocal = isLocalhost(); // returns true if running on localhost
+ */
+function isLocalhost() {
+  return Boolean(
     window.location.hostname === 'localhost' ||
       // [::1] is the IPv6 localhost address.
       window.location.hostname === '[::1]' ||
@@ -67,6 +145,7 @@ const isLocalhost = () =>
         /^127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/,
       ),
   );
+}
 
 export {
   isNonInteger,

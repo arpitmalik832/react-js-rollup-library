@@ -1,11 +1,16 @@
 /**
- * It accepts strings, objects as arguments, and returns a class string
- * e.g
- * 1. classNames('c1', 'c2', 'c3') => 'c1 c2 c3'
- * 2. classNames('c1', {c2: true, c3: false}) => 'c1 c2'
- * @returns {string}
+ * This function is used to concatenate multiple class names into a single string.
+ * @file This file is saved as `classNames.js`.
  */
-const classnames = (...args) => {
+/**
+ * Concatenates multiple class names into a single string.
+ * @param {...(string|object|Array)} args - The class names to concatenate.
+ * @returns {string} The concatenated class names.
+ * @example
+ * classNames('c1', 'c2', 'c3'); // returns 'c1 c2 c3'
+ * classNames('c1', {c2: true, c3: false}); // returns 'c1 c2'
+ */
+function classnames(...args) {
   const classes = args.reduce((acc, val) => {
     if (typeof val === 'string') {
       acc.push(val);
@@ -22,6 +27,6 @@ const classnames = (...args) => {
     return acc;
   }, []);
   return classes.join(' ');
-};
+}
 
 export default classnames;

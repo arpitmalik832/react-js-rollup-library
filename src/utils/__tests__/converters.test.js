@@ -1,3 +1,7 @@
+/**
+ * Unit test for converters.
+ * @file This file is saved as `converters.test.js`.
+ */
 import '@testing-library/jest-dom';
 
 import {
