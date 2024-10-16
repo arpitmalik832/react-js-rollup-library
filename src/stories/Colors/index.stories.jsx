@@ -1,3 +1,7 @@
+/**
+ * Colors Component Storybook.
+ * @file This file is saved as `Colors.stories.jsx`.
+ */
 import Colors from './index';
 
 export default {

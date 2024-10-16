@@ -1,10 +1,30 @@
+/**
+ * Renders the Colors storybook component.
+ * @file The file is saved as `Colors/index.js`.
+ */
 import tokens from '../../../static/enums/design_tokens.json';
 import { capitalizeFirstChar } from '../../utils/stringUtils';
 import classnames from '../../utils/classNames';
-import s from './index.module.scss';
+import s from './index.scss';
 
-const Colors = () => {
-  const getColorValue = (type, innerType, semanticLabel, theme) => {
+/**
+ * Colors component that renders color boxes based on design tokens.
+ * @returns {import('react').JSX.Element} The rendered color boxes.
+ * @example
+ * return <Colors />;
+ */
+function Colors() {
+  /**
+   * Retrieves the color value based on the provided parameters.
+   * @param {string} type - The type of color.
+   * @param {string} innerType - The inner type of color.
+   * @param {string} semanticLabel - The semantic label for the color.
+   * @param {string} theme - The theme (light or dark).
+   * @returns {string} The color value in hex format or as a color name.
+   * @example
+   * const color = getColorValue('primary', 'default', 'background', 'light');
+   */
+  function getColorValue(type, innerType, semanticLabel, theme) {
     const colorValue =
       tokens['color-semantics'][theme][type][innerType][semanticLabel].value;
     if (colorValue.startsWith('#')) {
@@ -12,9 +32,19 @@ const Colors = () => {
     }
     const [, colorName, shade] = colorValue.split('.');
     return tokens['color-primitives'][colorName][shade.replace('}', '')].value;
-  };
+  }
 
-  const renderColorBox = (type, innerType, semanticLabel, theme) => {
+  /**
+   * Retrieves the color value based on the provided parameters.
+   * @param {string} type - The type of color.
+   * @param {string} innerType - The inner type of color.
+   * @param {string} semanticLabel - The semantic label for the color.
+   * @param {string} theme - The theme (light or dark).
+   * @returns {string} The color value in hex format or as a color name.
+   * @example
+   * const color = getColorValue('primary', 'default', 'background', 'light');
+   */
+  function renderColorBox(type, innerType, semanticLabel, theme) {
     const colorValue = getColorValue(type, innerType, semanticLabel, theme);
     return (
       <div
@@ -37,7 +67,7 @@ const Colors = () => {
         </div>
       </div>
     );
-  };
+  }
 
   return (
     <div className={s.colorsContainer}>
@@ -69,6 +99,6 @@ const Colors = () => {
       )}
     </div>
   );
-};
+}
 
 export default Colors;
