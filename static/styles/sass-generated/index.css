@@ -66,6 +66,7 @@ sup {
 }
 
 img {
+  pointer-events: none;
   width: 100%;
   background: transparent;
   border-style: none;

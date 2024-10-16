@@ -1,3 +1,7 @@
+/**
+ * Unit tests for Button component.
+ * @file This file is saved as `Button.test.jsx`.
+ */
 import { render, cleanup, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 

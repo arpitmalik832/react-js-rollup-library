@@ -1,3 +1,7 @@
+/**
+ * It renders a list of icons.
+ * @file The file is saved as `Icons/index.jsx`.
+ */
 import React, { useEffect, useRef, useState } from 'react';
 
 import iconsList from '../../../static/enums/icons_list.mjs';
@@ -5,9 +9,17 @@ import { capitalizeFirstChar } from '../../utils/stringUtils';
 import { copyToClipboard } from '../../utils/commonUtils';
 import { errorLog } from '../../utils/logsUtils';
 
-import s from './index.module.scss';
+import s from './index.scss';
 
-const Icon = ({ name }) => {
+/**
+ * Icon component that dynamically imports and renders an SVG icon.
+ * @param {object} props - The component props.
+ * @param {string} props.name - The name of the icon to import.
+ * @returns {import('react').JSX.Element|null} The rendered icon or null if not available.
+ * @example
+ * <Icon name="exampleIcon.svg" />
+ */
+function Icon({ name }) {
   const ImportedIconRef = useRef();
   const [loading, setLoading] = useState(false);
 
@@ -25,42 +37,65 @@ const Icon = ({ name }) => {
 
   if (!name || loading || !ImportedIconRef.current) return null;
   return <ImportedIconRef.current />;
-};
+}
 
-const Icons = () => {
+/**
+ * Icons component that renders a list of icons and handles icon selection.
+ * @returns {import('react').JSX.Element} The rendered icons component.
+ * @example
+ * <Icons />
+ */
+function Icons() {
   const [currentIcon, setCurrentIcon] = useState('');
 
-  const getImportPath = () =>
-    `import { ReactComponent as ${capitalizeFirstChar(
+  /**
+   * Generates the import path for the selected icon.
+   * @returns {string} The import statement for the icon.
+   * @example
+   * const importPath = getImportPath();
+   */
+  function getImportPath() {
+    return `import { ReactComponent as ${capitalizeFirstChar(
       currentIcon.split('/')[1].replace('.svg', ''),
     )} } from 'library_name/icons/${currentIcon}'`;
+  }
 
-  const renderIconSection = (size, icons) => (
-    <section className={s.iconSection}>
-      <div className={s.sectionName}>{size}</div>
-      <div className={s.icons}>
-        {icons?.map(icon => (
-          <div
-            role="button"
-            tabIndex={0}
-            aria-pressed="false"
-            className={s.iconBox}
-            key={icon}
-            onClick={() => {
-              setCurrentIcon(icon);
-            }}
-            onKeyDown={e => {
-              if (e.key === 'Enter' || e.key === ' ') {
+  /**
+   * Renders a section of icons with a specified size.
+   * @param {string} size - The size of the icons section.
+   * @param {Array<string>} icons - The list of icon names to render.
+   * @returns {import('react').JSX.Element} The rendered icon section.
+   * @example
+   * renderIconSection('sm16', ['icon1.svg', 'icon2.svg']);
+   */
+  function renderIconSection(size, icons) {
+    return (
+      <section className={s.iconSection}>
+        <div className={s.sectionName}>{size}</div>
+        <div className={s.icons}>
+          {icons?.map(icon => (
+            <div
+              role="button"
+              tabIndex={0}
+              aria-pressed="false"
+              className={s.iconBox}
+              key={icon}
+              onClick={() => {
                 setCurrentIcon(icon);
-              }
-            }}
-          >
-            <Icon name={icon} />
-          </div>
-        ))}
-      </div>
-    </section>
-  );
+              }}
+              onKeyDown={e => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  setCurrentIcon(icon);
+                }
+              }}
+            >
+              <Icon name={icon} />
+            </div>
+          ))}
+        </div>
+      </section>
+    );
+  }
 
   return (
     <div className={s.iconsListContainer}>
@@ -136,6 +171,6 @@ const Icons = () => {
       )}
     </div>
   );
-};
+}
 
 export default Icons;
