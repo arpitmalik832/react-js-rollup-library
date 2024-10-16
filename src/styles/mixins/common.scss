@@ -24,10 +24,9 @@
   overflow: hidden; // fallback for non supported browsers
   display: -webkit-box;
   -webkit-box-orient: vertical;
+  -webkit-line-clamp: $maxLine;
 
   white-space: normal;
-
-  -webkit-line-clamp: $maxLine;
 }
 
 // Add horizontal gap between elements
@@ -51,22 +50,22 @@
 // Responsive breakpoints
 @mixin respond($breakpoint) {
   @if $breakpoint == phone {
-    @media only screen and (max-width: 600px) {
+    @media (width <= 600px) {
       @content;
     }
   }
   @if $breakpoint == tab-land {
-    @media only screen and (max-width: 750px) {
+    @media (width <= 750px) {
       @content;
     }
   }
   @if $breakpoint == tab {
-    @media only screen and (max-width: 1070px) {
+    @media (width <= 1070px) {
       @content;
     }
   }
   @if $breakpoint == desktop {
-    @media only screen and (min-width: 961px) {
+    @media (width <= 961px) {
       @content;
     }
   }

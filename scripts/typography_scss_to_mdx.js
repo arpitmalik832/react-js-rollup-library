@@ -1,4 +1,8 @@
 /* eslint-disable no-console */
+/**
+ * This script extracts typography SCSS variables and saves them to an MDX file.
+ * @file This script is saved as `typography_scss_to_mdx.js`.
+ */
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';

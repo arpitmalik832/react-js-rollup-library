@@ -1,3 +1,7 @@
+/**
+ * Contains common paths for the library.
+ * @file This file is saved as `commonPaths.mjs`.
+ */
 import { join } from 'path';
 
 const commonPaths = {

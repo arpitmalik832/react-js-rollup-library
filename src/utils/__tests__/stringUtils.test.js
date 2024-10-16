@@ -1,10 +1,14 @@
+/**
+ * Unit tests for the `stringUtils` utility functions.
+ * @file The file is saved as `stringUtils.test.js`.
+ */
 import '@testing-library/jest-dom';
 
 import {
   capitalizeFirstChar,
-  equalsIgnoringCase,
+  isEqualsIgnoringCase,
   maskCharsExceptLastN,
-  renderInitials,
+  getInitials,
 } from '../stringUtils';
 
 describe('stringUtils unit tests', () => {
@@ -14,7 +18,7 @@ describe('stringUtils unit tests', () => {
   });
 
   it('testing equalsIgnoringCase', () => {
-    equalsIgnoringCase('test', 'test');
+    isEqualsIgnoringCase('test', 'test');
   });
 
   it('testing maskCharsExceptLastN', () => {
@@ -23,8 +27,8 @@ describe('stringUtils unit tests', () => {
   });
 
   it('testing renderInitials', () => {
-    renderInitials('test');
-    renderInitials('test test');
-    renderInitials('');
+    getInitials('test');
+    getInitials('test test');
+    getInitials('');
   });
 });

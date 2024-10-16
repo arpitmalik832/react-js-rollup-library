@@ -1,3 +1,7 @@
+/**
+ * Style Dictionary configuration file.
+ * @file The file is saved as `style-dictionary.config.js`.
+ */
 const config = {
   source: ['./static/enums/**/*.json'],
   platforms: {
@@ -11,10 +15,7 @@ const config = {
           options: {
             mapName: 'colors',
           },
-          filter: token =>
-            ['color-primitives', 'color-semantics'].includes(
-              token.attributes.category,
-            ),
+          filter: token => token.attributes.category === 'color-semantics',
         },
         {
           destination: 'typography.scss',
