@@ -5,7 +5,6 @@
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import babel from '@rollup/plugin-babel';
-import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import svgr from '@svgr/rollup';
 import url from '@rollup/plugin-url';
 import image from '@rollup/plugin-image';
@@ -13,7 +12,6 @@ import postcss from 'rollup-plugin-postcss';
 import json from '@rollup/plugin-json';
 import progress from 'rollup-plugin-progress';
 
-import pkg from '../../../package.json' with { type: 'json' };
 import svgrConfig from '../../../svgr.config.mjs';
 import importStyles from '../customPlugins/importStyles.mjs';
 import stripCustomWindowVariables from '../customPlugins/stripCustomWindowVariables.mjs';
@@ -30,13 +28,8 @@ const config = {
       preserveModulesRoot: 'src',
     },
   ],
-  external: [
-    ...Object.keys(pkg.dependencies),
-    ...Object.keys(pkg.devDependencies),
-    /node_modules/,
-  ], // Exclude node_modules
+  external: [/node_modules/], // Exclude node_modules
   plugins: [
-    peerDepsExternal(),
     resolve({
       extensions: ['.js', '.jsx', '.scss', '.css'],
     }),
