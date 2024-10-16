@@ -1,3 +1,7 @@
+/**
+ * Unit test for classNames function.
+ * @file This file is saved as `classNames.test.js`.
+ */
 import '@testing-library/jest-dom';
 
 import classNames from '../classNames';

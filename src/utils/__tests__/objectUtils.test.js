@@ -1,3 +1,7 @@
+/**
+ * Unit tests for objectUtils.
+ * @file This file is saved as `objectUtils.test.js`.
+ */
 import '@testing-library/jest-dom';
 
 import { convertToArrayOfPairs, renameKeys } from '../objectUtils';

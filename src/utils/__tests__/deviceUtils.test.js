@@ -1,3 +1,7 @@
+/**
+ * Unit Tests for the deviceUtils functions.
+ * @file This file is saved as `deviceUtils.test.js`.
+ */
 import '@testing-library/jest-dom';
 
 import {
@@ -12,6 +16,12 @@ describe('deviceUtils unit tests', () => {
     jest.resetAllMocks();
   });
 
+  /**
+   * Mocks the user agent for testing purposes.
+   * @param {string} userAgent - The user agent string to mock.
+   * @example
+   * mockUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64)');
+   */
   function mockUserAgent(userAgent) {
     Object.defineProperty(global.navigator, 'userAgent', {
       value: userAgent,
