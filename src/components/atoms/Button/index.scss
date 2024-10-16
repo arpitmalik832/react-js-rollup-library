@@ -1,0 +1,11 @@
+@use '../../../styles/mixins/typography' as t;
+@use '../../../styles/mixins/common' as c;
+
+.button {
+  @include t.typography(h1, bold, #000);
+
+  /* stylelint-disable-next-line no-duplicate-selectors */
+  & {
+    margin: 0;
+  }
+}
