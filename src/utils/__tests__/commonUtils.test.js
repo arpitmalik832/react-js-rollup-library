@@ -1,3 +1,7 @@
+/**
+ * Unit tests for commonUtils.
+ * @file This file is saved as `commonUtils.test.js`.
+ */
 import '@testing-library/jest-dom';
 
 import {

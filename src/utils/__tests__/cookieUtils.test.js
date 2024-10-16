@@ -1,3 +1,7 @@
+/**
+ * Unit tests for cookieUtils.
+ * @file This file is saved as `cookieUtils.test.js`.
+ */
 import '@testing-library/jest-dom';
 
 import { deleteCookie, getCookie, setCookie } from '../cookieUtils';

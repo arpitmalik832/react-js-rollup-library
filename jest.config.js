@@ -1,5 +1,8 @@
-// Jest configuration
-// https://facebook.github.io/jest/docs/en/configuration.html
+/**
+ * Jest Config File.
+ * For more info, please refer https://facebook.github.io/jest/docs/en/configuration.html.
+ * @file This file is saved as `jest.config.js`.
+ */
 const config = {
   // Modules can be explicitly auto-mocked using jest.mock(moduleName).
   // https://facebook.github.io/jest/docs/en/configuration.html#automock-boolean
@@ -30,11 +33,6 @@ const config = {
     '!src/routes/**',
     '!src/stories/**',
   ],
-  globals: {
-    __isStaging__: true,
-    __isBeta__: false,
-    __isRelease__: false,
-  },
   // https://facebook.github.io/jest/docs/en/configuration.html#coveragedirectory-string
   coverageDirectory: '<rootDir>/coverage', // [string]
   coveragePathIgnorePatterns: ['node_modules'],
@@ -58,8 +56,8 @@ const config = {
   moduleNameMapper: {
     '.+\\.(css|styl|less|sass|scss)$': 'identity-obj-proxy',
     '.+\\.(jpg|jpeg|png|gif|eot|otf|webp|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$':
-      '<rootDir>/src/__tests__/__mocks__/mockAsset.js',
-    '.+\\.(svg)$': '<rootDir>/src/__tests__/__mocks__/mockSvgr.jsx',
+      '<rootDir>/src/__tests__/__mocks__/assetMock.js',
+    '.+\\.(svg)$': '<rootDir>/src/__tests__/__mocks__/svgrMock.jsx',
   },
   // modulePathIgnorePatterns: // [array<string>]
   // modulePaths: // [array<string>]
@@ -88,11 +86,11 @@ const config = {
     url: 'http://localhost:3000/',
   },
   transform: {
-    '\\.(js|jsx)$': '<rootDir>/node_modules/babel-jest',
+    '\\.(js|jsx)$': 'babel-jest',
   },
   // unmockedModulePathPatterns: // [array<string>]
   verbose: true, // [boolean],
-  setupFiles: ['<rootDir>/setupTests.js'], // [testConfig files DOM,Mock]
+  setupFiles: ['<rootDir>/jest.setup.js'], // [testConfig files DOM,Mock]
 };
 
 export default config;

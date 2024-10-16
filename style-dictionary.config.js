@@ -1,3 +1,7 @@
+/**
+ * Style Dictionary configuration file.
+ * @file The file is saved as `style-dictionary.config.js`.
+ */
 const config = {
   source: ['./static/enums/**/*.json'],
   platforms: {

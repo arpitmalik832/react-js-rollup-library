@@ -1,9 +1,10 @@
+@use 'sass:string';
 @use '../../static/styles/style-dictionary/colors' as c;
 @use '../../static/styles/style-dictionary/typography' as t;
 
 :root {
   @each $property, $value in c.$colors {
-    @if str-index($property, 'color-semantics-light-') == 1 {
+    @if string.index($property, 'color-semantics-light-') == 1 {
       --#{str-slice($property, 23)}: #{$value};
     }
   }
@@ -26,7 +27,7 @@
 
   @media (prefers-color-scheme: dark) {
     @each $property, $value in c.$colors {
-      @if str-index($property, 'color-semantics-dark-') == 1 {
+      @if string.index($property, 'color-semantics-dark-') == 1 {
         --#{str-slice($property, 22)}: #{$value};
       }
     }

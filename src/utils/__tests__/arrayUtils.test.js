@@ -1,3 +1,7 @@
+/**
+ * Unit test for arrayUtils.
+ * @file This file is saved as `arrayUtils.test.js`.
+ */
 import '@testing-library/jest-dom';
 
 import { deduplicate } from '../arrayUtils';

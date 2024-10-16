@@ -1,11 +1,28 @@
+/**
+ * Renders the Typography storybook component.
+ * @file The file is saved as `Typography/index.jsx`.
+ */
 import tokens from '../../../static/enums/design_tokens.json';
 import classnames from '../../utils/classNames';
 import { capitalizeFirstChar } from '../../utils/stringUtils';
 
-import s from './index.module.scss';
+import s from './index.scss';
 
-const Typography = () => {
-  const getStyleObject = input => {
+/**
+ * Renders the Typography component.
+ * @returns {import('react').JSX.Element} The rendered Typography component.
+ * @example
+ * <Typography />
+ */
+function Typography() {
+  /**
+   * Converts a style object into a format suitable for inline styles.
+   * @param {object} input - The input style object.
+   * @returns {object} The converted style object.
+   * @example
+   * const style = getStyleObject({ 'font-size': { value: '16px' } });
+   */
+  function getStyleObject(input) {
     const styles = Object.entries(input).map(([property, valueObj = {}]) => {
       const propName = property
         ?.split('-')
@@ -16,7 +33,7 @@ const Typography = () => {
       return [propName, valueObj.value];
     });
     return Object.fromEntries(styles);
-  };
+  }
 
   return (
     <div className={s.typeContainer}>
@@ -83,6 +100,6 @@ const Typography = () => {
       </section>
     </div>
   );
-};
+}
 
 export default Typography;

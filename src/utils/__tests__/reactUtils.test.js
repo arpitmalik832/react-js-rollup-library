@@ -1,3 +1,7 @@
+/**
+ * Unit tests for reactUtils.
+ * @file This file is saved as `reactUtils.test.js`.
+ */
 import { renderHook } from '@testing-library/react';
 import '@testing-library/jest-dom';
 
