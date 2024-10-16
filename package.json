@@ -120,7 +120,7 @@
     "style-dictionary": "^4.0.1",
     "style-loader": "^4.0.0",
     "stylelint": "^14.16.1",
-    "stylelint-config-clean-order": "^5.4.2",
+    "stylelint-config-clean-order": "^6.1.0",
     "stylelint-config-hudochenkov": "^8.0.1",
     "stylelint-config-idiomatic-order": "^10.0.0",
     "stylelint-config-prettier": "^9.0.5",
