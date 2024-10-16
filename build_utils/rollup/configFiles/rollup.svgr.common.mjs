@@ -8,7 +8,6 @@ import progress from 'rollup-plugin-progress';
 import icons_list from '../../../static/enums/icons_list.mjs';
 import svgrConfig from '../../../svgr.config.mjs';
 import copyPlugin from '../customPlugins/copy.mjs';
-import pkg from '../../../package.json' with { type: 'json' };
 import { ENVS } from '../../config/index.mjs';
 
 const config = {
@@ -19,11 +18,7 @@ const config = {
     preserveModulesRoot: 'src',
     sourcemap: ![ENVS.PROD, ENVS.BETA].includes(process.env.LIB_ENV),
   },
-  external: [
-    ...Object.keys(pkg.dependencies),
-    ...Object.keys(pkg.devDependencies),
-    /node_modules/,
-  ], // Exclude node_modules
+  external: [/node_modules/], // Exclude node_modules
   plugins: [svgr(svgrConfig), copyPlugin(), progress()],
 };
 
