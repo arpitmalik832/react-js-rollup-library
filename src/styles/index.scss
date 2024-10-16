@@ -1,25 +1,19 @@
-@import './variables';
+@use './variables';
+@use './modified_normalize';
 
-// @import "./modified-normalize";
-
-* {
-  margin: 0;
+.zeroPadding {
   padding: 0;
 }
 
-.zeroPadding {
-  padding: 0 !important;
-}
-
 .zeroMargin {
-  margin: 0 !important;
+  margin: 0;
 }
 
 .zeroHorizontalMargin {
-  margin-right: 0 !important;
-  margin-left: 0 !important;
+  margin-right: 0;
+  margin-left: 0;
 }
 
 .fullWidth {
-  width: 100% !important;
+  width: 100%;
 }
