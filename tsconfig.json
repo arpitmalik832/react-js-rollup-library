@@ -12,6 +12,6 @@
     "skipLibCheck": true,
     "removeComments": true
   },
-  "include": ["dist/**/*.js"],
+  "include": ["dist/**/*.js", "dist/**/*.cjs", "dist/**/*.mjs"],
   "exclude": ["node_modules", "__tests__"]
 }
