@@ -16,16 +16,32 @@ import svgrConfig from '../../../svgr.config.mjs';
 import importStyles from '../customPlugins/importStyles.mjs';
 import stripCustomWindowVariables from '../customPlugins/stripCustomWindowVariables.mjs';
 import { ENVS } from '../../config/index.mjs';
+import {
+  entryPath,
+  outputPath,
+  stylesPath,
+} from '../../config/commonPaths.mjs';
 
 const config = {
-  input: 'src/index.js',
+  input: entryPath,
   output: [
     {
-      dir: 'dist',
+      dir: outputPath,
       format: 'esm',
       sourcemap: ![ENVS.PROD, ENVS.BETA].includes(process.env.LIB_ENV),
       preserveModules: true,
       preserveModulesRoot: 'src',
+      entryFileNames: `esm/[name].js`,
+      chunkFileNames: `esm/[name].js`,
+    },
+    {
+      dir: outputPath,
+      format: 'cjs',
+      sourcemap: ![ENVS.PROD, ENVS.BETA].includes(process.env.LIB_ENV),
+      preserveModules: true,
+      preserveModulesRoot: 'src',
+      entryFileNames: `cjs/[name].js`,
+      chunkFileNames: `cjs/[name].js`,
     },
   ],
   external: [/node_modules/], // Exclude node_modules
@@ -45,8 +61,8 @@ const config = {
       }),
     postcss({
       extensions: ['.css', '.scss'],
-      extract: true,
-      minimize: true,
+      extract: stylesPath,
+      minimize: [ENVS.PROD, ENVS.BETA].includes(process.env.LIB_ENV),
       modules: true,
       use: ['sass'],
       failOnError: true,
