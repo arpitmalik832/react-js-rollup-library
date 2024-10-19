@@ -30,7 +30,6 @@ const minifyFile = async filePath => {
     }
 
     await writeFile(filePath, minifiedCode, 'utf8');
-    console.log(`Minified: ${filePath}`);
   } catch (error) {
     console.error(`Error minifying file ${filePath}:`, error);
   }
