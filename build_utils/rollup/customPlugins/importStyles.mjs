@@ -15,11 +15,12 @@ export default function importStyles() {
   return {
     name: 'import-styles-plugin',
     generateBundle(options, bundle) {
-      let importPath = '';
+      const importPath = '../index.css';
       for (const [fileName, fileMeta] of Object.entries(bundle)) {
-        if (fileName === 'index.js') {
-          importPath = './index.css';
+        if (fileName === 'esm/index.js') {
           fileMeta.code = `import "${importPath}";${![ENVS.PROD, ENVS.BETA].includes(process.env.LIB_ENV) ? '\n' : ''}${fileMeta.code}`;
+        } else if (fileName === 'cjs/index.js') {
+          fileMeta.code = `require("${importPath}");${![ENVS.PROD, ENVS.BETA].includes(process.env.LIB_ENV) ? '\n' : ''}${fileMeta.code}`;
         }
       }
     },

@@ -4,6 +4,10 @@
  * @file This file is saved as `icons_list.mjs`.
  */
 
+/**
+ * List of icon files.
+ * @type {string[]}
+ */
 const list = [
   'lg32/standardAccount.svg',
   'rg24/systemActionABCKeypad.svg',
