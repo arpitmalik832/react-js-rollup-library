@@ -1,4 +1,4 @@
-name: Unit Testing
+name: Tests
 
 on:
   push:
@@ -19,7 +19,7 @@ on:
       - 'feature-*'
 
 jobs:
-  unit-test:
+  tests:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -27,11 +27,25 @@ jobs:
         with:
           node-version: '20'
       - name: Comment out authToken line in .npmrc
-        run: |
-          sed -i 's|//npm.pkg.github.com/:_authToken=${GH_TOKEN}|#//npm.pkg.github.com/:_authToken=${GH_TOKEN}|' .npmrc
+        run: sed -i 's|//npm.pkg.github.com/:_authToken=${GH_TOKEN}|#//npm.pkg.github.com/:_authToken=${GH_TOKEN}|' .npmrc
       - name: Authenticate with GitHub Packages
         run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.GH_TOKEN }}" >> ~/.npmrc
       - name: Installing dependencies
         run: yarn install --frozen-lockfile
+      - name: Running dependency audit
+        run: yarn audit
+      - name: Running lint
+        run: yarn lint
       - name: Running unit tests
         run: yarn test:coverage
+      - name: Building the project
+        run: yarn build
+      - name: Checking bundle size
+        run: npx bundlewatch --config bundlewatch.config.json
+        env:
+          BUNDLEWATCH_GITHUB_TOKEN: ${{ secrets.BUNDLEWATCH_GITHUB_TOKEN }}
+          CI_REPO_OWNER: ${{ github.repository_owner }}
+          CI_REPO_NAME: ${{ github.event.repository.name }}
+          CI_COMMIT_SHA: ${{ github.sha }}
+      - name: Building the storybook
+        run: yarn storybook:build
