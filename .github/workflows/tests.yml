@@ -32,6 +32,8 @@ jobs:
         run: |
           sed -i 's|//npm.pkg.github.com/:_authToken=${GH_TOKEN}|#//npm.pkg.github.com/:_authToken=${GH_TOKEN}|' .npmrc
           echo "//npm.pkg.github.com/:_authToken=${{ secrets.GH_TOKEN }}" >> ~/.npmrc
+      - name: Installing dependencies
+        run: yarn install --frozen-lockfile
       - name: Cache node_modules
         id: cache-deps
         uses: actions/cache@v4
@@ -40,8 +42,6 @@ jobs:
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-yarn-
-      - name: Installing dependencies
-        run: yarn install --frozen-lockfile
 
   dependency-audit:
     runs-on: ubuntu-latest
