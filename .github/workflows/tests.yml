@@ -21,6 +21,8 @@ on:
 jobs:
   install-dependencies:
     runs-on: ubuntu-latest
+    outputs:
+      cache-key: ${{ steps.cache-deps.outputs.cache-hit }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -32,6 +34,7 @@ jobs:
           echo "//npm.pkg.github.com/:_authToken=${{ secrets.GH_TOKEN }}" >> ~/.npmrc
       - name: Installing dependencies
         run: yarn install --frozen-lockfile
+        id: cache-deps
   dependency-audit:
     runs-on: ubuntu-latest
     needs: install-dependencies
