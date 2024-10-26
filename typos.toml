@@ -4,5 +4,6 @@ extend-exclude = [
     "dist/**",
     "build/**",
     "coverage/**",
-    "distInfo"
+    "distInfo/**",
+    "**/CHANGELOG.md",
 ]
