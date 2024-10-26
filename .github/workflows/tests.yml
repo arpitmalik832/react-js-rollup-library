@@ -51,8 +51,6 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
-      - name: Running dependency audit
-        run: yarn audit
       - name: Authenticating with GitHub Packages
         run: |
           sed -i 's|//npm.pkg.github.com/:_authToken=${GH_TOKEN}|#//npm.pkg.github.com/:_authToken=${GH_TOKEN}|' .npmrc
@@ -62,6 +60,8 @@ jobs:
         with:
           path: node_modules
           key: ${{ needs.install-dependencies.outputs.cache-key }}
+      - name: Running dependency audit
+        run: yarn audit
       - name: Running lint
         run: yarn lint
       - name: Running unit tests
