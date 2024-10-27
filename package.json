@@ -1,6 +1,6 @@
 {
   "name": "@arpitmalik832/react-js-rollup-library",
-  "version": "0.0.1-alpha.1",
+  "version": "0.0.1-alpha.2",
   "description": "A React JS starter code",
   "type": "module",
   "author": "Arpit Malik",
@@ -17,8 +17,9 @@
     "dist",
     "types"
   ],
-  "module": "dist/index.js",
-  "types": "types/index.d.ts",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "types/esm/index.d.ts",
   "exports": {
     "./icons/*": {
       "types": {
@@ -98,10 +99,10 @@
     "knip:w/o-devDependencies": "yarn knip --exclude devDependencies",
     "knip:prod": "yarn knip --production",
     "knip:prod:check-files": "yarn knip:prod --include files",
-    "storybook": "yarn build-common && cross-env APP_ENV=staging LIB_ENV=staging STORY_ENV=staging storybook dev -p 6006",
-    "storybook:visualizer": "yarn build-common && cross-env APP_ENV=staging LIB_ENV=staging STORY_ENV=staging INCLUDE_VISUALIZER=true storybook dev -p 6006",
-    "storybook:buildStats": "yarn build-common && cross-env APP_ENV=staging LIB_ENV=staging STORY_ENV=staging INCLUDE_BUILD_STATS=true storybook dev -p 6006",
-    "storybook:visualizer:buildStats": "yarn build-common && cross-env APP_ENV=staging LIB_ENV=staging STORY_ENV=staging INCLUDE_VISUALIZER=true INCLUDE_BUILD_STATS=true storybook dev -p 6006",
+    "storybook": "yarn build-common && cross-env APP_ENV=staging LIB_ENV=staging STORY_ENV=development storybook dev -p 6006",
+    "storybook:visualizer": "yarn build-common && cross-env APP_ENV=staging LIB_ENV=staging STORY_ENV=development INCLUDE_VISUALIZER=true storybook dev -p 6006",
+    "storybook:buildStats": "yarn build-common && cross-env APP_ENV=staging LIB_ENV=staging STORY_ENV=development INCLUDE_BUILD_STATS=true storybook dev -p 6006",
+    "storybook:visualizer:buildStats": "yarn build-common && cross-env APP_ENV=staging LIB_ENV=staging STORY_ENV=development INCLUDE_VISUALIZER=true INCLUDE_BUILD_STATS=true storybook dev -p 6006",
     "storybook:build": "yarn build-common && cross-env APP_ENV=staging LIB_ENV=staging STORY_ENV=staging storybook build",
     "storybook:build:visualizer": "yarn build-common && cross-env APP_ENV=staging LIB_ENV=staging STORY_ENV=staging INCLUDE_VISUALIZER=true storybook build",
     "storybook:build:buildStats": "yarn build-common && cross-env APP_ENV=staging LIB_ENV=staging STORY_ENV=staging INCLUDE_BUILD_STATS=true storybook build",
