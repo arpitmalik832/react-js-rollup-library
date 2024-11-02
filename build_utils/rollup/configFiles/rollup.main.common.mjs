@@ -65,7 +65,6 @@ const config = {
       minimize: [ENVS.PROD, ENVS.BETA].includes(process.env.LIB_ENV),
       modules: true,
       use: ['sass'],
-      failOnError: true,
     }),
     image(),
     url(),
