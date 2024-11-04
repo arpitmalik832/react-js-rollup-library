@@ -211,7 +211,7 @@
     "rollup-plugin-progress": "^1.1.2",
     "rollup-plugin-visualizer": "^5.12.0",
     "sass": "^1.80.3",
-    "sass-loader": "^16.0.2",
+    "sass-loader": "^16.0.3",
     "storybook": "^8.3.6",
     "storybook-addon-render-modes": "^0.0.11",
     "style-dictionary": "^4.1.3",
