@@ -24,7 +24,7 @@ function config() {
       },
       {
         src: 'static/enums/icons_list.mjs',
-        dest: 'dist/assets/icons',
+        dest: 'dist',
       },
     ],
   });

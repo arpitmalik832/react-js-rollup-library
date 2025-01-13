@@ -1,14 +1,6 @@
-name: Lint
+name: Spellcheck
 
 on:
-  push:
-    branches:
-      - development
-      - staging
-      - beta
-      - release
-      - master
-      - 'feature-*'
   pull_request:
     branches:
       - development
@@ -19,14 +11,12 @@ on:
       - 'feature-*'
 
 jobs:
-  lint:
+  typos:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
-      - name: Installing dependencies
-        run: yarn install --frozen-lockfile
-      - name: Running lint
-        run: yarn lint
+      - name: Run typos check
+        uses: crate-ci/typos@master
