@@ -10,16 +10,15 @@
     "url": "https://github.com/arpitmalik832/react-js-rollup-library"
   },
   "engines": {
-    "node": ">=20.17.0",
-    "yarn": ">=1.22.22"
+    "node": ">=20.17.0"
   },
   "files": [
     "dist",
     "types"
   ],
-  "main": "dist/cjs/index.js",
-  "module": "dist/esm/index.js",
-  "types": "types/esm/index.d.ts",
+  "main": "dist/cjs/lib.js",
+  "module": "dist/esm/lib.js",
+  "types": "types/esm/lib.d.ts",
   "exports": {
     "./icons/*": {
       "types": {
@@ -31,11 +30,11 @@
     },
     ".": {
       "types": {
-        "import": "./types/esm/index.d.ts",
-        "require": "./types/cjs/index.d.ts"
+        "import": "./types/esm/lib.d.ts",
+        "require": "./types/cjs/lib.d.ts"
       },
-      "import": "./dist/esm/index.js",
-      "require": "./dist/cjs/index.js"
+      "import": "./dist/esm/lib.js",
+      "require": "./dist/cjs/lib.js"
     },
     "./styles/*": "./dist/styles/*"
   },
