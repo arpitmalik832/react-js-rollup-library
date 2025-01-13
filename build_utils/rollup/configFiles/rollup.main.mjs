@@ -7,7 +7,10 @@ import baseConfig from './rollup.main.common.mjs';
 import minimizerConfig from './rollup.minimizer.mjs';
 import visualizerConfig from './rollup.visualizer.mjs';
 import buildStatsConfig from './rollup.buildStats.mjs';
-import { ERR_NO_LIB_ENV_FLAG } from '../../config/logs.mjs';
+import {
+  ERR_NO_APP_ENV_FLAG,
+  ERR_NO_LIB_ENV_FLAG,
+} from '../../config/logs.mjs';
 import { ENVS } from '../../config/index.mjs';
 
 /**
@@ -42,6 +45,9 @@ function getAddons() {
 function getConfig() {
   if (!process.env.LIB_ENV) {
     throw new Error(ERR_NO_LIB_ENV_FLAG);
+  }
+  if (!process.env.APP_ENV) {
+    throw new Error(ERR_NO_APP_ENV_FLAG);
   }
 
   const addons = getAddons();
