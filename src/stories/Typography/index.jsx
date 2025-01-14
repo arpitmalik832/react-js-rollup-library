@@ -6,7 +6,7 @@ import tokens from '../../../static/enums/design_tokens.json';
 import classnames from '../../utils/classNames';
 import { capitalizeFirstChar } from '../../utils/stringUtils';
 
-import s from './index.scss';
+import s from './index.module.scss';
 
 /**
  * Renders the Typography component.
@@ -20,17 +20,17 @@ function Typography() {
    * @param {object} input - The input style object.
    * @returns {object} The converted style object.
    * @example
-   * const style = getStyleObject({ 'font-size': { value: '16px' } });
+   * const style = getStyleObject({ 'font-size': { value: '16rem' } });
    */
   function getStyleObject(input) {
-    const styles = Object.entries(input).map(([property, valueObj = {}]) => {
+    const styles = Object.entries(input).map(([property, valueObj]) => {
       const propName = property
         ?.split('-')
         ?.map((namePart, idx) =>
           idx > 0 ? capitalizeFirstChar(namePart) : namePart,
         )
         ?.join('');
-      return [propName, valueObj.value];
+      return [propName, valueObj?.value];
     });
     return Object.fromEntries(styles);
   }
@@ -38,17 +38,19 @@ function Typography() {
   return (
     <div className={s.typeContainer}>
       <section className={classnames(s.section, s.scaleSection)}>
-        <div className={s.sectionHeading}>Type Scale</div>
-        <table className={s.scaleTable}>
-          <thead>
+        <div className={s.sectionHeading} data-testId="type-scale-heading">
+          Type Scale
+        </div>
+        <table className={s.scaleTable} data-testId="scale-table">
+          <thead data-testId="scale-table-head">
             <tr>
-              <th>Scale Category</th>
-              <th>Size</th>
-              <th>Line Height</th>
-              <th>Letter Spacing</th>
+              <th data-testId="scale-category-head">Scale Category</th>
+              <th data-testId="size-head">Size</th>
+              <th data-testId="line-height-head">Line Height</th>
+              <th data-testId="letter-spacing-head">Letter Spacing</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody data-testId="scale-table-body">
             {Object.entries(tokens?.typography?.scale).map(([name, meta]) => (
               <tr key={name}>
                 <td
@@ -56,14 +58,18 @@ function Typography() {
                     ...getStyleObject(meta),
                     fontWeight: 700,
                   }}
+                  data-testId={`scale-${name}`}
                 >
                   {name}
                 </td>
-                <td>{meta['font-size'].value.replace('px', '')}</td>
-                <td>{meta['line-height'].value.replace('px', '')}</td>
-                <td>
-                  {parseFloat(meta['letter-spacing'].value.replace('px', '')) /
-                    1.0}
+                <td data-testId={`font-size-${name}`}>
+                  {meta['font-size']?.value}
+                </td>
+                <td data-testId={`line-height-${name}`}>
+                  {meta['line-height']?.value}
+                </td>
+                <td data-testId={`letter-spacing-${name}`}>
+                  {parseFloat(meta['letter-spacing']?.value) / 1.0}
                 </td>
               </tr>
             ))}
@@ -71,25 +77,34 @@ function Typography() {
         </table>
       </section>
       <section className={classnames(s.section, s.weightSection)}>
-        <div className={s.sectionHeading}>Type Weight</div>
+        <div className={s.sectionHeading} data-testId="type-weight-heading">
+          Type Weight
+        </div>
         <div className={s.sectionBody}>
           {Object.entries(tokens?.typography?.weight).map(([weight, meta]) => (
-            <div key={weight} className={s.weightContainer}>
-              <div className={s.weightName}>{capitalizeFirstChar(weight)}</div>
+            <div
+              key={weight}
+              className={s.weightContainer}
+              data-testId="weight-container"
+            >
+              <div
+                data-testId={`weight-name-${weight}`}
+                className={s.weightName}
+              >
+                {capitalizeFirstChar(weight)}
+              </div>
               <div className={s.weightDemoContainer}>
                 {Object.entries(tokens?.typography?.scale).map(
                   ([name, scalesMeta]) => (
                     <div
+                      data-testId={`weight-demo-${weight}-${name}`}
                       key={name}
                       style={{
                         ...getStyleObject(scalesMeta),
                         fontWeight: meta.value,
                       }}
                     >
-                      {`${name} - ${scalesMeta['font-size'].value.replace(
-                        'px',
-                        '',
-                      )}/${scalesMeta['line-height'].value.replace('px', '')}`}
+                      {`${name} - ${scalesMeta['font-size']?.value}/${scalesMeta['line-height']?.value}`}
                     </div>
                   ),
                 )}
