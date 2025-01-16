@@ -7,6 +7,9 @@ settings:
 importers:
   .:
     dependencies:
+      '@arpitmalik832/react-js-rollup-library':
+        specifier: 'link:'
+        version: 'link:'
       '@reduxjs/toolkit':
         specifier: ^2.5.0
         version: 2.5.0(react-redux@9.2.0(@types/react@19.0.6)(react@19.0.0)(redux@5.0.1))(react@19.0.0)
